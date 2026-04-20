@@ -1,0 +1,868 @@
+GET /api/v1/books?page=1&limit=12 - 2026-04-16T04:01:48.308Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T04:01:53.904Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T04:01:53.934Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T04:01:53.984Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+POST /api/v1/borrow/69d606dc3cf1592f02a467bb - 2026-04-16T04:44:50.974Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+POST /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T04:44:58.422Z
+Body: {"rating":5,"comment":"Good"}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books?page=1&limit=12 - 2026-04-16T04:45:01.849Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T04:45:07.097Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T04:45:07.119Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T04:45:07.175Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+POST /api/v1/borrow/69d606dc3cf1592f02a467bb - 2026-04-16T04:45:16.052Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books?page=1&limit=12 - 2026-04-16T05:47:35.097Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books?page=1&limit=12&search=The - 2026-04-16T05:47:44.684Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books?page=1&limit=12&genre=History - 2026-04-16T05:47:55.464Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books?page=1&limit=12 - 2026-04-16T05:47:58.294Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T06:06:10.298Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T06:06:10.319Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+POST /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T06:06:16.528Z
+Body: {"rating":5,"comment":"Good"}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+POST /api/v1/borrow/69d606dc3cf1592f02a467bb - 2026-04-16T06:06:21.445Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T07:28:58.666Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T07:28:58.774Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T07:28:58.789Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T07:28:58.806Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T07:28:58.812Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T07:28:58.854Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T07:28:58.967Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T07:28:58.974Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T07:28:59.002Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T07:28:59.015Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T07:28:59.072Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T07:28:59.083Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T07:28:59.091Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T07:28:59.095Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T07:28:59.172Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T07:28:59.176Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T07:28:59.180Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T07:28:59.184Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T07:28:59.213Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T07:28:59.223Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T07:28:59.232Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T07:28:59.249Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T07:28:59.276Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T07:28:59.284Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T07:28:59.304Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T07:28:59.311Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T07:28:59.329Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T07:28:59.333Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T07:28:59.341Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T07:28:59.352Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T07:28:59.363Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T07:28:59.393Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T07:28:59.386Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T07:28:59.397Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T07:28:59.400Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T07:28:59.407Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T07:28:59.415Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T07:28:59.435Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T07:28:59.440Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T07:28:59.464Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T07:28:59.454Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T07:28:59.469Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T07:28:59.473Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T07:28:59.508Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T07:28:59.521Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T07:28:59.527Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T07:28:59.533Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T07:28:59.585Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T07:28:59.589Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T07:28:59.620Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T07:28:59.643Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T07:28:59.686Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T07:28:59.689Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T07:28:59.740Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T07:28:59.747Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T07:28:59.765Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T07:28:59.801Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T07:28:59.834Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T07:28:59.838Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T07:28:59.888Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T07:28:59.899Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T07:28:59.905Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T07:28:59.980Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T07:28:59.984Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T07:29:00.002Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T07:29:00.039Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T07:29:00.061Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T07:29:00.065Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T07:29:00.116Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T07:29:00.142Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T07:29:00.145Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T07:29:00.195Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T07:29:00.198Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T07:29:00.204Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T07:29:00.251Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T07:29:00.261Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T07:29:00.265Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T07:29:00.336Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T07:29:00.355Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T07:29:00.359Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T07:29:00.396Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T07:29:00.402Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T07:29:00.410Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T07:29:00.465Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T07:29:00.469Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T07:29:00.473Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T07:29:00.512Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T07:29:00.519Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T07:29:00.572Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T07:29:00.590Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T07:29:00.620Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T07:29:00.624Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T07:29:00.654Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T07:29:00.658Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T07:29:00.688Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T07:29:00.705Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T07:29:05.649Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T07:29:05.672Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T07:29:05.860Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+POST /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T07:29:11.601Z
+Body: {"rating":5,"comment":""}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T08:01:06.338Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T08:01:06.375Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T08:01:06.384Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T08:01:06.380Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T08:01:06.393Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T08:01:06.399Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T08:01:06.441Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T08:01:06.450Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T08:01:06.470Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T08:01:06.474Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T08:01:06.479Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T08:01:06.487Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T08:01:06.495Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T08:01:06.525Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T08:01:06.543Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T08:01:06.547Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T08:01:06.555Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T08:01:06.597Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T08:01:06.601Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T08:01:06.615Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T08:01:06.635Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T08:01:06.638Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T08:01:06.654Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T08:01:06.671Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T08:01:06.674Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T08:01:06.693Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T08:01:06.724Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T08:01:06.728Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T08:01:06.732Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T08:01:06.757Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T08:01:06.760Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T08:01:06.782Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T08:01:06.799Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T08:01:06.805Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T08:01:06.812Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T08:01:06.851Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+POST /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T08:01:11.638Z
+Body: {"rating":4,"comment":""}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T08:01:34.098Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T08:01:34.120Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T08:01:34.273Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+POST /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T08:01:38.840Z
+Body: {"rating":5,"comment":""}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books?page=1&limit=12 - 2026-04-16T08:08:06.993Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T08:08:13.859Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T08:08:13.868Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T08:08:13.939Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books?page=1&limit=12 - 2026-04-16T08:08:16.370Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books?page=1&limit=12 - 2026-04-16T12:08:18.807Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T12:08:31.017Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T12:08:31.036Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T12:08:31.117Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+POST /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T12:08:32.851Z
+Body: {"rating":5,"comment":""}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T12:11:02.184Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T12:11:02.189Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T12:11:02.256Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T12:11:18.454Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T12:11:18.486Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T12:11:18.593Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+POST /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T12:11:36.636Z
+Body: {"rating":5,"comment":""}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T12:26:13.683Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T12:26:13.717Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T12:26:13.913Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+POST /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T12:26:18.430Z
+Body: {"rating":5,"comment":""}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T13:12:38.292Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T13:12:38.240Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T13:12:38.410Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+POST /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T13:12:40.449Z
+Body: {"rating":5,"comment":""}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+POST /api/v1/borrow/69d606dc3cf1592f02a467bb - 2026-04-16T13:12:45.815Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T13:13:23.570Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T13:13:23.600Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T13:13:23.699Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+POST /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T13:13:29.396Z
+Body: {"rating":5,"comment":""}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T13:38:45.149Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T13:38:45.200Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T13:38:45.355Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+POST /api/v1/borrow/69d606dc3cf1592f02a467bb - 2026-04-16T13:38:46.842Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books/69d606dc3cf1592f02a467bb - 2026-04-16T13:38:51.165Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb - 2026-04-16T13:38:51.189Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/reviews/69d606dc3cf1592f02a467bb/average - 2026-04-16T13:38:51.308Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWRiMzZkOTQ1MzdkNjE1N2U0ZGYwNzYiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NjI2Mzc2NywiZXhwIjoxNzc2MjY3MzY3fQ.NeNXNzx-XpY0_QQqH0DRg6au5X6rHXcRWrPatfPxVXI"}
+-----------------------------
+GET /api/v1/books?page=1&limit=12 - 2026-04-16T14:49:39.751Z
+Body: {}
+Cookies: {}
+-----------------------------
+GET /api/v1/books/69d5ec1a404c3dc97420c372 - 2026-04-16T14:49:47.541Z
+Body: {}
+Cookies: {}
+-----------------------------
+GET /api/v1/reviews/69d5ec1a404c3dc97420c372 - 2026-04-16T14:49:47.549Z
+Body: {}
+Cookies: {}
+-----------------------------
+GET /api/v1/reviews/69d5ec1a404c3dc97420c372/average - 2026-04-16T14:49:47.609Z
+Body: {}
+Cookies: {}
+-----------------------------
+GET /api/v1/books?page=1&limit=12 - 2026-04-16T14:49:53.411Z
+Body: {}
+Cookies: {}
+-----------------------------
+POST /api/v1/auth/logout - 2026-04-16T14:50:08.253Z
+Body: {}
+Cookies: {}
+-----------------------------
+POST /api/v1/auth/register - 2026-04-16T14:50:46.350Z
+Body: {"name":"Kannan","email":"kannan@gmail.com","password":"********"}
+Cookies: {}
+-----------------------------
+POST /api/v1/auth/login - 2026-04-16T14:51:49.852Z
+Body: {"email":"kannan@gmail.com","password":"********"}
+Cookies: {}
+-----------------------------
+GET /api/v1/auth/getMe - 2026-04-16T14:51:50.334Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWUwZjc0NjFjM2NmMjMwN2QyZWM1YzQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NzYzNTExMTAsImV4cCI6MTc3NjM1NDcxMH0.f34CCPA2hSwJQgFALvhOA7i4haU138NmkUVqte6VumA"}
+-----------------------------
+GET /api/v1/books - 2026-04-16T14:51:50.420Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWUwZjc0NjFjM2NmMjMwN2QyZWM1YzQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NzYzNTExMTAsImV4cCI6MTc3NjM1NDcxMH0.f34CCPA2hSwJQgFALvhOA7i4haU138NmkUVqte6VumA"}
+-----------------------------
+POST /api/v1/books - 2026-04-16T14:53:48.277Z
+Body: {"title":"Yoga Karma","author":"Swami Vivekananda","isbn":"9789392040047","genre":"","publishedYear":1896,"copiesAvailable":1,"description":"Karma Yoga (1896) by Swami Vivekananda is a foundational spiritual book exploring the \"yoga of action,\" teaching that selfless work performed without attachment to results is a direct path to self-realization. Based on lectures, it teaches how to turn daily duties into spiritual practices, purifying the mind, reducing ego, and discovering inner strength"}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWUwZjc0NjFjM2NmMjMwN2QyZWM1YzQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NzYzNTExMTAsImV4cCI6MTc3NjM1NDcxMH0.f34CCPA2hSwJQgFALvhOA7i4haU138NmkUVqte6VumA"}
+-----------------------------
+POST /api/v1/books - 2026-04-16T14:54:14.594Z
+Body: {"title":"Yoga Karma","author":"Swami Vivekananda","isbn":"9789392040047","genre":"","publishedYear":1896,"copiesAvailable":1,"description":"Karma Yoga (1896) by Swami Vivekananda is a foundational spiritual book exploring the \"yoga of action,\" teaching that selfless work performed without attachment to results is a direct path to self-realization. Based on lectures, it teaches how to turn daily duties into spiritual practices, purifying the mind, reducing ego, and discovering inner strength"}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWUwZjc0NjFjM2NmMjMwN2QyZWM1YzQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NzYzNTExMTAsImV4cCI6MTc3NjM1NDcxMH0.f34CCPA2hSwJQgFALvhOA7i4haU138NmkUVqte6VumA"}
+-----------------------------
+GET /api/v1/books - 2026-04-16T14:55:02.568Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWUwZjc0NjFjM2NmMjMwN2QyZWM1YzQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NzYzNTExMTAsImV4cCI6MTc3NjM1NDcxMH0.f34CCPA2hSwJQgFALvhOA7i4haU138NmkUVqte6VumA"}
+-----------------------------
+POST /api/v1/books - 2026-04-16T14:55:39.979Z
+Body: {"title":"Yoga Karma","author":"Swami Vivekananda","isbn":"9789392040047","genre":"","publishedYear":1896,"copiesAvailable":1,"description":"Karma Yoga (1896) by Swami Vivekananda is a foundational spiritual book exploring the \"yoga of action,\" teaching that selfless work performed without attachment to results is a direct path to self-realization. Based on lectures, it teaches how to turn daily duties into spiritual practices, purifying the mind, reducing ego, and discovering inner strength"}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWUwZjc0NjFjM2NmMjMwN2QyZWM1YzQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NzYzNTExMTAsImV4cCI6MTc3NjM1NDcxMH0.f34CCPA2hSwJQgFALvhOA7i4haU138NmkUVqte6VumA"}
+-----------------------------
+POST /api/v1/books - 2026-04-16T14:56:23.320Z
+Body: {"title":"Yoga Karma","author":"Swami Vivekananda","isbn":"9789392040047","genre":"","publishedYear":1896,"copiesAvailable":0,"description":"Karma Yoga (1896) by Swami Vivekananda is a foundational spiritual book exploring the \"yoga of action,\" teaching that selfless work performed without attachment to results is a direct path to self-realization. Based on lectures, it teaches how to turn daily duties into spiritual practices, purifying the mind, reducing ego, and discovering inner strength"}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWUwZjc0NjFjM2NmMjMwN2QyZWM1YzQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NzYzNTExMTAsImV4cCI6MTc3NjM1NDcxMH0.f34CCPA2hSwJQgFALvhOA7i4haU138NmkUVqte6VumA"}
+-----------------------------
+POST /api/v1/books - 2026-04-16T14:56:41.751Z
+Body: {"title":"Yoga Karma","author":"Swami Vivekananda","isbn":"9789392040047","genre":"","publishedYear":1896,"copiesAvailable":0,"description":"Karma Yoga (1896) by Swami Vivekananda is a foundational spiritual book exploring the \"yoga of action,\" teaching that selfless work performed without attachment to results is a direct path to self-realization. Based on lectures, it teaches how to turn daily duties into spiritual practices, purifying the mind, reducing ego, and discovering inner strength"}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWUwZjc0NjFjM2NmMjMwN2QyZWM1YzQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NzYzNTExMTAsImV4cCI6MTc3NjM1NDcxMH0.f34CCPA2hSwJQgFALvhOA7i4haU138NmkUVqte6VumA"}
+-----------------------------
+GET /api/v1/books - 2026-04-16T14:57:49.155Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWUwZjc0NjFjM2NmMjMwN2QyZWM1YzQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NzYzNTExMTAsImV4cCI6MTc3NjM1NDcxMH0.f34CCPA2hSwJQgFALvhOA7i4haU138NmkUVqte6VumA"}
+-----------------------------
+GET /api/v1/books - 2026-04-16T14:58:18.179Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWUwZjc0NjFjM2NmMjMwN2QyZWM1YzQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NzYzNTExMTAsImV4cCI6MTc3NjM1NDcxMH0.f34CCPA2hSwJQgFALvhOA7i4haU138NmkUVqte6VumA"}
+-----------------------------
+GET /api/v1/books - 2026-04-16T14:58:20.177Z
+Body: {}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWUwZjc0NjFjM2NmMjMwN2QyZWM1YzQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NzYzNTExMTAsImV4cCI6MTc3NjM1NDcxMH0.f34CCPA2hSwJQgFALvhOA7i4haU138NmkUVqte6VumA"}
+-----------------------------
+POST /api/v1/books - 2026-04-16T14:58:22.506Z
+Body: {"title":"Yoga Karma","author":"Swami Vivekananda","isbn":"9789392040047","genre":"","publishedYear":1896,"copiesAvailable":0,"description":"Karma Yoga (1896) by Swami Vivekananda is a foundational spiritual book exploring the \"yoga of action,\" teaching that selfless work performed without attachment to results is a direct path to self-realization. Based on lectures, it teaches how to turn daily duties into spiritual practices, purifying the mind, reducing ego, and discovering inner strength"}
+Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWUwZjc0NjFjM2NmMjMwN2QyZWM1YzQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NzYzNTExMTAsImV4cCI6MTc3NjM1NDcxMH0.f34CCPA2hSwJQgFALvhOA7i4haU138NmkUVqte6VumA"}
+-----------------------------
