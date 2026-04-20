@@ -74,7 +74,7 @@ const authController = {
       res.cookie("token", token, {
         httpOnly: true,
         secure: NODE_ENV === "production",
-        sameSite: "lax",
+        sameSite: "none",
         maxAge: 24 * 60 * 60 * 1000,
       });
 
@@ -121,7 +121,7 @@ const authController = {
       res.clearCookie("token", {
         httpOnly: true,
         secure: NODE_ENV === "production",
-        sameSite: "lax",
+        sameSite: "none",
       });
 
       res.json({ message: "Logout successful" });

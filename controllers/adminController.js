@@ -1,9 +1,10 @@
+const mongoose = require("mongoose");
 const Book = require("../models/bookModel");
 const User = require("../models/userModel");
 const Borrow = require("../models/borrowModel");
 const Notification = require("../models/notificationModel");
 
-// STATS
+// ADMIN STATS
 const getAdminStats = async (req, res) => {
   try {
     const totalBooks = await Book.countDocuments();
@@ -24,12 +25,13 @@ const getAdminStats = async (req, res) => {
     const revenue = revenueData[0]?.total || 0;
 
     res.json({ totalBooks, totalUsers, borrowed, overdue, revenue });
+
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    res.status(500).json({ message: "Server error" });
   }
 };
 
-// MONTHLY
+// MONTHLY STATS
 const getMonthlyStats = async (req, res) => {
   try {
     const data = await Borrow.aggregate([
@@ -43,15 +45,20 @@ const getMonthlyStats = async (req, res) => {
     ]);
 
     res.json(data);
+
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    res.status(500).json({ message: "Error fetching stats" });
   }
 };
 
-// NOTIFY
+// NOTIFY ALL USERS
 const notifyAllUsers = async (req, res) => {
   try {
     const { message } = req.body;
+
+    if (!message || !message.trim()) {
+      return res.status(400).json({ message: "Message required" });
+    }
 
     const users = await User.find().select("_id");
 
@@ -63,9 +70,40 @@ const notifyAllUsers = async (req, res) => {
 
     await Notification.insertMany(notifications);
 
-    res.json({ message: "Notification sent" });
+    res.json({
+      message: "Notification sent to all users",
+      count: notifications.length,
+    });
+
   } catch (err) {
     res.status(500).json({ message: err.message });
+  }
+};
+
+// ADD BOOK (ADMIN)
+const addBook = async (req, res) => {
+  try {
+    const { title, author, genre, description } = req.body;
+
+    let image = "";
+
+    if (req.file) {
+      image = `data:${req.file.mimetype};base64,${req.file.buffer.toString("base64")}`;
+    }
+
+    const book = await Book.create({
+      title,
+      author,
+      genre,
+      description,
+      image,
+      status: "Available",
+    });
+
+    res.status(201).json(book);
+
+  } catch (err) {
+    res.status(500).json({ message: "Failed to create book" });
   }
 };
 
@@ -78,8 +116,9 @@ const getRecentActivity = async (req, res) => {
       .limit(5);
 
     res.json(data);
+
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    res.status(500).json({ message: "Failed to fetch activity" });
   }
 };
 
@@ -102,38 +141,103 @@ const getTopBooks = async (req, res) => {
     ]);
 
     res.json(data);
+
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    res.status(500).json({ message: "Failed to fetch top books" });
   }
 };
-  const addBook = async (req, res) => {
-  try {
-    const { title, author, description, genre } = req.body;
 
-    if (!title || !author) {
-      return res.status(400).json({ message: "Title and Author required" });
+// USERS MANAGEMENT
+// GET ALL USERS
+const getAllUsers = async (req, res) => {
+  try {
+    const users = await User.find()
+      .select("-password")
+      .sort({ createdAt: -1 });
+
+    res.status(200).json(users);
+
+  } catch (err) {
+    res.status(500).json({ message: "Failed to fetch users" });
+  }
+};
+
+
+// UPDATE USER ROLE
+const updateUserRole = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { role } = req.body;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ message: "Invalid user ID" });
     }
 
-    const book = await Book.create({
-      title,
-      author,
-      description,
-      genre,
-      status: "Available",
-    });
+    const allowedRoles = ["user", "admin"];
+    if (!allowedRoles.includes(role)) {
+      return res.status(400).json({ message: "Invalid role" });
+    }
 
-    res.status(201).json(book);
+    if (req.userId === id) {
+      return res.status(400).json({
+        message: "You cannot change your own role",
+      });
+    }
+
+    const user = await User.findByIdAndUpdate(
+      id,
+      { role },
+      { new: true }
+    ).select("-password");
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.json(user);
+
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    res.status(500).json({ message: "Failed to update role" });
   }
 };
- 
+
+
+// DELETE USER
+const deleteUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ message: "Invalid user ID" });
+    }
+
+    if (req.userId === id) {
+      return res.status(400).json({
+        message: "You cannot delete your own account",
+      });
+    }
+
+    const user = await User.findByIdAndDelete(id);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.json({ message: "User deleted successfully" });
+
+  } catch (err) {
+    res.status(500).json({ message: "Failed to delete user" });
+  }
+};
 
 module.exports = {
   getAdminStats,
   getMonthlyStats,
   notifyAllUsers,
+  addBook,
   getRecentActivity,
   getTopBooks,
-  addBook
+  getAllUsers,
+  updateUserRole,
+  deleteUser,
 };

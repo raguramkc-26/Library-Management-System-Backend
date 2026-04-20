@@ -1,25 +1,43 @@
 const express = require("express");
-const bookRouter = express.Router();
+const router = express.Router();
 
 const {
-  getAllBooks,
   createBook,
+  getBooks,
   getBookById,
   updateBook,
   deleteBook,
-  searchBooks,
 } = require("../controllers/bookController");
 
 const { isAuthenticated, allowRoles } = require("../middlewares/auth");
+const upload = require("../middlewares/upload");
 
-// ORDER MATTERS
-bookRouter.get("/search", searchBooks);
-bookRouter.get("/", getAllBooks);
-bookRouter.get("/:id", getBookById);
+// PUBLIC
+router.get("/", getBooks);
+router.get("/:id", getBookById);
 
-// ADMIN ONLY
-bookRouter.post("/", isAuthenticated, allowRoles(["admin"]), createBook);
-bookRouter.put("/:id", isAuthenticated, allowRoles(["admin"]), updateBook);
-bookRouter.delete("/:id", isAuthenticated, allowRoles(["admin"]), deleteBook);
+// ADMIN
+router.post(
+  "/",
+  isAuthenticated,
+  allowRoles(["admin"]),
+  upload.single("image"),
+  createBook
+);
 
-module.exports = bookRouter;
+router.put(
+  "/:id",
+  isAuthenticated,
+  allowRoles(["admin"]),
+  upload.single("image"),
+  updateBook
+);
+
+router.delete(
+  "/:id",
+  isAuthenticated,
+  allowRoles(["admin"]),
+  deleteBook
+);
+
+module.exports = router;
