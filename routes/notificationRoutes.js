@@ -9,8 +9,8 @@ const {
   deleteNotification,
 } = require("../controllers/notificationController");
 
-// GET ALL USER NOTIFICATIONS
-router.get("/", isAuthenticated, getMyNotifications);
+// GET MY NOTIFICATIONS
+router.get("/me", isAuthenticated, getMyNotifications);
 
 // MARK ONE AS READ
 router.patch("/:id/read", isAuthenticated, markAsRead);

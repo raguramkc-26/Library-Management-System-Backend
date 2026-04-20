@@ -1,63 +1,139 @@
 const Book = require("../models/bookModel");
-const Borrow = require("../models/borrowModel");
 const User = require("../models/userModel");
+const Borrow = require("../models/borrowModel");
+const Notification = require("../models/notificationModel");
 
+// STATS
 const getAdminStats = async (req, res) => {
   try {
-    // total books
     const totalBooks = await Book.countDocuments();
-    //totalusers
     const totalUsers = await User.countDocuments();
-    // borrowed books
-    const borrowedBooks = await Borrow.countDocuments({
-      status: "borrowed",
-    });
-    //available book
-    const availableBooks = await Book.countDocuments({ status: "Available" });
-    // overdue books
-    const overdueBooks = await Borrow.countDocuments({
+
+    const borrowed = await Borrow.countDocuments({ status: "borrowed" });
+
+    const overdue = await Borrow.countDocuments({
       status: "borrowed",
       dueDate: { $lt: new Date() },
     });
 
-    res.json({
-      totalBooks,
-      borrowedBooks,
-      overdueBooks,
-      totalUsers,
-    });
+    const revenueData = await Borrow.aggregate([
+      { $match: { fineAmount: { $gt: 0 } } },
+      { $group: { _id: null, total: { $sum: "$fineAmount" } } },
+    ]);
 
+    const revenue = revenueData[0]?.total || 0;
+
+    res.json({ totalBooks, totalUsers, borrowed, overdue, revenue });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 };
-   
-  const getMonthlyBorrowStats = async (req, res) => {
+
+// MONTHLY
+const getMonthlyStats = async (req, res) => {
   try {
-    const stats = await Borrow.aggregate([
+    const data = await Borrow.aggregate([
       {
         $group: {
           _id: { $month: "$createdAt" },
           total: { $sum: 1 },
         },
       },
-      { $sort: { _id: 1 } },
+      { $sort: { "_id": 1 } },
     ]);
 
-    // fill all 12 months
-    const months = Array.from({ length: 12 }, (_, i) => ({
-      month: i + 1,
-      total: 0,
-    }));
-
-    stats.forEach((item) => {
-      months[item._id - 1].total = item.total;
-    });
-
-    res.json(months);
+    res.json(data);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 };
 
-module.exports = { getAdminStats , getMonthlyBorrowStats };
+// NOTIFY
+const notifyAllUsers = async (req, res) => {
+  try {
+    const { message } = req.body;
+
+    const users = await User.find().select("_id");
+
+    const notifications = users.map((u) => ({
+      user: u._id,
+      message,
+      type: "system",
+    }));
+
+    await Notification.insertMany(notifications);
+
+    res.json({ message: "Notification sent" });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+// RECENT ACTIVITY
+const getRecentActivity = async (req, res) => {
+  try {
+    const data = await Borrow.find()
+      .populate("book", "title")
+      .sort({ createdAt: -1 })
+      .limit(5);
+
+    res.json(data);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+// TOP BOOKS
+const getTopBooks = async (req, res) => {
+  try {
+    const data = await Borrow.aggregate([
+      { $group: { _id: "$book", count: { $sum: 1 } } },
+      { $sort: { count: -1 } },
+      { $limit: 5 },
+      {
+        $lookup: {
+          from: "books",
+          localField: "_id",
+          foreignField: "_id",
+          as: "book",
+        },
+      },
+      { $unwind: "$book" },
+    ]);
+
+    res.json(data);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+  const addBook = async (req, res) => {
+  try {
+    const { title, author, description, genre } = req.body;
+
+    if (!title || !author) {
+      return res.status(400).json({ message: "Title and Author required" });
+    }
+
+    const book = await Book.create({
+      title,
+      author,
+      description,
+      genre,
+      status: "Available",
+    });
+
+    res.status(201).json(book);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+ 
+
+module.exports = {
+  getAdminStats,
+  getMonthlyStats,
+  notifyAllUsers,
+  getRecentActivity,
+  getTopBooks,
+  addBook
+};

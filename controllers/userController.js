@@ -10,7 +10,7 @@ const getUserDetails = async (req, res) => {
         }
 
         // Only self OR admin
-        if (req.userId !== userId && req.role !== "admin") {
+        if (req.userId.toString() !== userId && req.role !== "admin") {
             return res.status(403).json({ message: "Forbidden" });
         }
 
@@ -32,12 +32,17 @@ const updateRole = async (req, res) => {
         const { role } = req.body;
         const userId = req.params.id;
 
+        if(!mongoose.Types.ObjectId.isValid(userId)) {
+            return
+            res.status(400).json({ message: "Invalid ID"});
+        }
+
         if (req.role !== "admin") {
             return res.status(403).json({ message: "Only admin can update roles" });
         }
 
-        // 🔥 Prevent self-change
-        if (req.userId === userId) {
+        // Prevent self-change
+        if (req.userId.toString() === userId) {
             return res.status(400).json({ message: "Admin cannot change their own role" });
         }
 
