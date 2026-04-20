@@ -21,7 +21,7 @@ const app = express();
 // CORS
 app.use(
   cors({
-    origin: process.env.CLIENT_URL,
+    origin:[ "http://localhost:5173","https://librarymanagemsystem.netlify.app" ],
     credentials: true,
   })
 );
