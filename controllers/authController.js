@@ -71,13 +71,6 @@ const authController = {
         { expiresIn: "1h" }
       );
 
-      res.cookie("token", token, {
-        httpOnly: true,
-        secure: NODE_ENV === "production",
-        sameSite: "none",
-        maxAge: 24 * 60 * 60 * 1000,
-      });
-
       res.json({
         message: "Login successful",
         user: {

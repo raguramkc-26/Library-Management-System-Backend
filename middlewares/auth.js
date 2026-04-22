@@ -4,7 +4,12 @@ const User = require('../models/userModel');
 
 const isAuthenticated = async (req, res, next) => {
     try {
-        const token = req.cookies.token;
+        const authHeader = req.headers.authorization;
+
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
+      return res.status(401).json({ message: "No token provided" });
+    }
+        const token = authheader.split(" ")[1];  
         if (!token) {
             return res.status(401).json({ message: "No token"});
         }
@@ -17,11 +22,12 @@ const isAuthenticated = async (req, res, next) => {
         // call the next middleware or route handler
         next();
     } catch (err) {
+        console.error("Auth Error:", err.message); //useful debugging
         return res.status(401).json({ message: 'Invalid token' });
     }
 };
 
-const allowRoles = (roles) => {
+const allowRoles = (...roles) => {
     return (req, res, next) => {
         if (!roles.includes(req.role)) {
             return res.status(403).json({ message: 'Forbidden' });

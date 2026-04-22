@@ -8,10 +8,28 @@ const addReview = async (req, res) => {
     const { bookId } = req.params;
     const { rating, comment } = req.body;
 
-    if (!rating) {
-      return res.status(400).json({ message: "Rating is required" });
+    // AUTH CHECK
+    if (!userId) {
+      return res.status(401).json({ message: "Unauthorized" });
     }
 
+    // VALID OBJECT ID
+    if (!mongoose.Types.ObjectId.isValid(bookId)) {
+      return res.status(400).json({ message: "Invalid book ID" });
+    }
+
+    // VALIDATE RATING
+    if (!rating || rating < 1 || rating > 5) {
+      return res.status(400).json({ message: "Rating must be between 1 and 5" });
+    }
+
+    // CHECK BOOK EXISTS
+    const book = await Book.findById(bookId);
+    if (!book) {
+      return res.status(404).json({ message: "Book not found" });
+    }
+
+    // CHECK DUPLICATE REVIEW
     const existing = await Review.findOne({
       user: userId,
       book: bookId,
@@ -35,10 +53,10 @@ const addReview = async (req, res) => {
     });
 
   } catch (error) {
-    res.status(500).json({ message: "Internal server error" });
+    console.error("Add Review Error:", error);
+    res.status(500).json({ message: error.message });
   }
 };
-
 const getReviews = async (req, res) => {
   try {
     const { bookId } = req.params;
@@ -61,17 +79,22 @@ const getAverageRating = async (req, res) => {
   try {
     const { bookId } = req.params;
 
+    if (!mongoose.Types.ObjectId.isValid(bookId)) {
+      return res.status(400).json({ message: "Invalid book ID" });
+    }
+
     const result = await Review.aggregate([
-      { 
-        $match: { book: new mongoose.Types.ObjectId(bookId), 
+      {
+        $match: {
+          book: new mongoose.Types.ObjectId(bookId),
           status: "approved",
-         }, 
+        },
       },
       {
         $group: {
           _id: "$book",
-          avgRating: { $avg: "$rating" }, 
-          total: { $sum: 1 }, 
+          avgRating: { $avg: "$rating" },
+          total: { $sum: 1 },
         },
       },
     ]);
@@ -79,9 +102,11 @@ const getAverageRating = async (req, res) => {
     res.status(200).json(result[0] || { avgRating: 0, total: 0 });
 
   } catch (error) {
-    res.status(500).json({ message: "Internal server error" });
+    console.error("Average Rating Error:", error);
+    res.status(500).json({ message: error.message });
   }
 };
+
 
  const getPendingReviews = async (req, res) => {
   try {
