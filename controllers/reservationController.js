@@ -7,7 +7,9 @@ const createReservation = async (req, res) => {
   try {
     const userId = req.userId;
     const { bookId } = req.params;
-
+    if (!mongoose.Types.ObjectId.isValid(bookId)) {
+    return res.status(400).json({ message: "Invalid book ID" });
+   }
     // Validate user
     if (!userId) {
       return res.status(401).json({

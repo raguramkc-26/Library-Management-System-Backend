@@ -16,6 +16,9 @@ const borrowBook = async (req, res) => {
     }
 
     const { bookId } = req.params;
+    if (!mongoose.Types.ObjectId.isValid(bookId)) {
+    return res.status(400).json({ message: "Invalid book ID" });
+    }
 
     const book = await Book.findById(bookId);
     if (!book) {
