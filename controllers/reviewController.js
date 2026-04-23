@@ -136,9 +136,11 @@ const getPendingReviews = async (req, res) => {
       .populate("book", "title")
       .lean();
 
-    const safe = reviews.filter(r => r.user && r.book);
+    if (!reviews) {
+      return res.status(200).json({ success: true, data: [] });
+    }
 
-    console.log("PENDING REVIEWS:", safe);
+    const safe = reviews.filter(r => r.user && r.book);
 
     res.status(200).json({
       success: true,
@@ -147,10 +149,12 @@ const getPendingReviews = async (req, res) => {
 
   } catch (error) {
     console.error("Pending Reviews Error:", error);
-    res.status(500).json({ success: false, message: error.message });
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
   }
 };
-
 
 /*ADMIN - APPROVE REVIEW*/
 const approveReview = async (req, res) => {
