@@ -107,21 +107,24 @@ const getAverageRating = async (req, res) => {
   }
 };
 
-
  const getPendingReviews = async (req, res) => {
   try {
     const reviews = await Review.find({ status: "pending" })
       .populate("user", "name")
-      .populate("book", "title")
-      .sort({ createdAt: -1 });
+      .populate("book", "title");
 
-    res.json({ reviews });
+    // FILTER BROKEN DATA
+    const safeReviews = reviews.filter(
+      (r) => r.user !== null && r.book !== null
+    );
+
+    res.json({ reviews: safeReviews });
 
   } catch (error) {
+    console.error("Pending Reviews Error:", error);
     res.status(500).json({ message: error.message });
   }
 };
-
 // ADMIN: APPROVE REVIEW
 const approveReview = async (req, res) => {
   try {
