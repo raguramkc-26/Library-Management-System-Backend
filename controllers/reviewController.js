@@ -114,11 +114,9 @@ const getAverageRating = async (req, res) => {
       .populate("book", "title");
 
     // FILTER BROKEN DATA
-    const safeReviews = reviews.filter(
-      (r) => r.user !== null && r.book !== null
-    );
+    const safe = reviews.filter(r => r.user && r.book);
 
-    res.json({ reviews: safeReviews });
+    res.json({ data: safe });
 
   } catch (error) {
     console.error("Pending Reviews Error:", error);
