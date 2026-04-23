@@ -14,11 +14,11 @@ const getAdminStats = async (req, res) => {
 
     const overdue = await Borrow.countDocuments({
       status: "borrowed",
-      dueDate: { $lt: new Date() },
+      dueDate: { $exists: true, $lt: new Date() },
     });
 
     const revenueData = await Borrow.aggregate([
-      { $match: { fineAmount: { $gt: 0 } } },
+      { $match: { fineAmount: { $exists: true, $gt: 0 } } },
       { $group: { _id: null, total: { $sum: "$fineAmount" } } },
     ]);
 
