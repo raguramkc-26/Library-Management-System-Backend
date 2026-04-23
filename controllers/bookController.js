@@ -12,7 +12,7 @@ const createBook = async (req, res) => {
     let image = "";
 
     if (req.file) {
-      image = `data:${req.file.mimetype};base64,${req.file.buffer.toString("base64")}`;
+      image = req.file.path; // Cloudinary URL
     }
 
     const book = await Book.create({
@@ -31,7 +31,6 @@ const createBook = async (req, res) => {
     res.status(500).json({ message: "Failed to create book" });
   }
 };
-
 // GET ALL BOOKS (with filters)
 const getBooks = async (req, res) => {
   try {

@@ -5,7 +5,7 @@ const cors = require("cors");
 
 const logger = require("./middlewares/logger");
 const errorRoute = require("./middlewares/errorRoute");
-
+const upload = require("./middlewares/upload");
 const authRouter = require("./routes/authRoutes");
 const bookRouter = require("./routes/bookRoutes");
 const borrowRouter = require("./routes/borrowRoutes");
@@ -43,7 +43,6 @@ app.use("/api/v1/reviews", reviewRouter);
 app.use("/api/v1/payment", paymentRoutes);
 app.use("/api/v1/admin", adminRoutes);
 app.use("/api/v1/notifications", notificationRoutes);
-
 // Test route
 app.get("/test-email", async (req, res) => {
   const sendMail = require("./utils/email");
