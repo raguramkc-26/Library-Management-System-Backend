@@ -20,7 +20,7 @@ router.get("/:id", getBookById);
 router.post(
   "/",
   isAuthenticated,
-  allowRoles(["admin"]),
+  allowRoles("admin"),
   upload.single("image"),
   createBook
 );
@@ -28,7 +28,7 @@ router.post(
 router.put(
   "/:id",
   isAuthenticated,
-  allowRoles(["admin"]),
+  allowRoles("admin"),
   upload.single("image"),
   updateBook
 );
@@ -36,7 +36,7 @@ router.put(
 router.delete(
   "/:id",
   isAuthenticated,
-  allowRoles(["admin"]),
+  allowRoles("admin"),
   deleteBook
 );
 
