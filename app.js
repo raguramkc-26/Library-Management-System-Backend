@@ -21,7 +21,7 @@ const app = express();
 // CORS
 app.use(
   cors({
-    origin:[ "http://localhost:5173","https://librarymanagementsystem.netlify.app" ],
+    origin:[ "http://localhost:5173","https://librarymanagemsystem.netlify.app" ],
     credentials: true,
   })
 );
