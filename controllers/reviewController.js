@@ -9,29 +9,14 @@ const addReview = async (req, res) => {
     const { bookId } = req.params;
     const { rating, comment } = req.body;
 
-    if (!userId) {
-      return res.status(401).json({
-        success: false,
-        message: "Unauthorized",
-      });
-    }
-
-    if (!mongoose.Types.ObjectId.isValid(bookId)) {
-      return res.status(400).json({
-        success: false,
-        message: "Invalid book ID",
-      });
-    }
-
     if (!rating || rating < 1 || rating > 5) {
       return res.status(400).json({
         success: false,
-        message: "Rating must be between 1 and 5",
+        message: "Rating must be 1-5",
       });
     }
 
     const book = await Book.findById(bookId);
-
     if (!book) {
       return res.status(404).json({
         success: false,
@@ -39,7 +24,21 @@ const addReview = async (req, res) => {
       });
     }
 
-    // PREVENT DUPLICATE REVIEW
+    // CHECK USER HAS BORROWED
+    const hasBorrowed = await Borrow.findOne({
+      borrower: userId,
+      book: bookId,
+      status: "returned",
+    });
+
+    if (!hasBorrowed) {
+      return res.status(400).json({
+        success: false,
+        message: "You must borrow before reviewing",
+      });
+    }
+
+    // PREVENT DUPLICATE
     const existing = await Review.findOne({
       user: userId,
       book: bookId,
@@ -48,7 +47,7 @@ const addReview = async (req, res) => {
     if (existing) {
       return res.status(400).json({
         success: false,
-        message: "You already reviewed this book",
+        message: "Already reviewed",
       });
     }
 
@@ -57,17 +56,16 @@ const addReview = async (req, res) => {
       book: bookId,
       rating,
       comment,
-      status: "approved", 
+      status: "pending", 
     });
 
     res.status(201).json({
       success: true,
-      message: "Review added successfully",
+      message: "Review submitted for approval",
       data: review,
     });
 
   } catch (error) {
-    console.error("Add Review Error:", error);
     res.status(500).json({
       success: false,
       message: error.message,

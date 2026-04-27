@@ -21,7 +21,7 @@ const app = express();
 // CORS
 app.use(
   cors({
-    origin:[ "http://localhost:5173","https://librarymanagemsystem.netlify.app" ],
+    origin:[ "http://localhost:5173","https://librarymanagementsystem.netlify.app" ],
     credentials: true,
   })
 );
@@ -56,7 +56,7 @@ app.get("/test-email", async (req, res) => {
   res.send("Email sent");
 });
 
-// Error handler (must be last)
+// Error handler 
 app.use(errorRoute);
 
 module.exports = app;

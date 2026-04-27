@@ -1,19 +1,19 @@
 const Book = require("../models/bookModel");
 
-// CREATE BOOK (with image)
+// CREATE
 const createBook = async (req, res) => {
   try {
     const { title, author, genre, description } = req.body;
 
     if (!title || !author) {
-      return res.status(400).json({ message: "Title and Author required" });
+      return res.status(400).json({
+        success: false,
+        message: "Title and Author required",
+      });
     }
 
     let image = "";
-
-    if (req.file) {
-      image = req.file.path; // Cloudinary URL
-    }
+    if (req.file) image = req.file.path;
 
     const book = await Book.create({
       title,
@@ -24,14 +24,21 @@ const createBook = async (req, res) => {
       status: "Available",
     });
 
-    res.status(201).json(book);
+    res.status(201).json({
+      success: true,
+      data: book,
+    });
 
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: "Failed to create book" });
+    res.status(500).json({
+      success: false,
+      message: "Failed to create book",
+    });
   }
 };
-// GET ALL BOOKS (with filters)
+
+
+// GET ALL 
 const getBooks = async (req, res) => {
   try {
     const { keyword, genre, available, page = 1 } = req.query;
@@ -57,35 +64,53 @@ const getBooks = async (req, res) => {
     const total = await Book.countDocuments(query);
 
     res.json({
+      success: true,
       books,
       totalPages: Math.ceil(total / limit),
     });
 
   } catch {
-    res.status(500).json({ message: "Failed to fetch books" });
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch books",
+    });
   }
 };
 
-// GET SINGLE BOOK
+
+// GET ONE
 const getBookById = async (req, res) => {
   try {
     const book = await Book.findById(req.params.id);
 
-    if (!book) return res.status(404).json({ message: "Book not found" });
+    if (!book) {
+      return res.status(404).json({
+        success: false,
+        message: "Book not found",
+      });
+    }
 
-    res.json(book);
+    res.json({
+      success: true,
+      data: book,
+    });
+
   } catch {
-    res.status(500).json({ message: "Error fetching book" });
+    res.status(500).json({
+      success: false,
+      message: "Error fetching book",
+    });
   }
 };
 
-// UPDATE BOOK
+
+// UPDATE
 const updateBook = async (req, res) => {
   try {
     const updateData = { ...req.body };
 
     if (req.file) {
-      updateData.image = `data:${req.file.mimetype};base64,${req.file.buffer.toString("base64")}`;
+      updateData.image = req.file.path;
     }
 
     const book = await Book.findByIdAndUpdate(
@@ -94,26 +119,49 @@ const updateBook = async (req, res) => {
       { new: true }
     );
 
-    if (!book) return res.status(404).json({ message: "Book not found" });
+    if (!book) {
+      return res.status(404).json({
+        success: false,
+        message: "Book not found",
+      });
+    }
 
-    res.json(book);
+    res.json({
+      success: true,
+      data: book,
+    });
 
   } catch {
-    res.status(500).json({ message: "Update failed" });
+    res.status(500).json({
+      success: false,
+      message: "Update failed",
+    });
   }
 };
 
-// DELETE BOOK
+
+// DELETE
 const deleteBook = async (req, res) => {
   try {
     const book = await Book.findByIdAndDelete(req.params.id);
 
-    if (!book) return res.status(404).json({ message: "Book not found" });
+    if (!book) {
+      return res.status(404).json({
+        success: false,
+        message: "Book not found",
+      });
+    }
 
-    res.json({ message: "Book deleted" });
+    res.json({
+      success: true,
+      message: "Book deleted",
+    });
 
   } catch {
-    res.status(500).json({ message: "Delete failed" });
+    res.status(500).json({
+      success: false,
+      message: "Delete failed",
+    });
   }
 };
 
