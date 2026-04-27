@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Review = require("../models/reviewModel");
 const Book = require("../models/bookModel");
+const Borrow = require("../models/borrowModel");
 
 // ADD REVIEW
 const addReview = async (req, res) => {
@@ -178,8 +179,8 @@ const rejectReview = async (req, res) => {
 };
 
 module.exports = {
-  addReview,
-  getReviews,
+  createReview: addReview,
+  getReviewsByBook: getReviews,
   getAverageRating,
   getPendingReviews,
   approveReview,
