@@ -155,5 +155,5 @@ const getAverageRating = async (req, res) => {
 module.exports = {
   addReview,
   getReviews,
-  getAverageRating,
+  getAverageRating,     
 };
