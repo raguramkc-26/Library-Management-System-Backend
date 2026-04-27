@@ -9,7 +9,7 @@ authRouter.post("/register", register);
 authRouter.post("/login", login);
 
 // protected routes
-authRouter.get("/getMe", isAuthenticated, getMe);
+authRouter.get("/me", isAuthenticated, getMe);
 authRouter.post("/logout", isAuthenticated, logout);
 
 authRouter.post("/forgot-password", authController.forgotPassword);

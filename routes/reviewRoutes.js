@@ -13,12 +13,12 @@ const {
 } = require("../controllers/reviewController");
 
 // ADMIN
-router.get("/pending", isAuthenticated, allowRoles(["admin"]), getPendingReviews);
+router.get("/pending", isAuthenticated, allowRoles("admin"), getPendingReviews);
 router.patch("/:id/approve", isAuthenticated, allowRoles(["admin"]), approveReview);
 router.patch("/:id/reject", isAuthenticated, allowRoles(["admin"]), rejectReview);
 
 // USER
-router.post("/:bookId", isAuthenticated, addReview);
+router.post("/:bookId", isAuthenticated, createReview);
 
 // IMPORTANT ORDER
 router.get("/:bookId/average", getAverageRating);
