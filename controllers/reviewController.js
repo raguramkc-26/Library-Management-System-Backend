@@ -2,43 +2,54 @@ const mongoose = require("mongoose");
 const Review = require("../models/reviewModel");
 const Book = require("../models/bookModel");
 
-/*ADD REVIEW*/
+// ADD REVIEW
 const addReview = async (req, res) => {
   try {
     const userId = req.userId;
     const { bookId } = req.params;
     const { rating, comment } = req.body;
 
-    // AUTH
     if (!userId) {
-      return res.status(401).json({ success: false, message: "Unauthorized" });
+      return res.status(401).json({
+        success: false,
+        message: "Unauthorized",
+      });
     }
 
-    // VALID ID
     if (!mongoose.Types.ObjectId.isValid(bookId)) {
-      return res.status(400).json({ success: false, message: "Invalid book ID" });
+      return res.status(400).json({
+        success: false,
+        message: "Invalid book ID",
+      });
     }
 
-    // VALIDATE INPUT
     if (!rating || rating < 1 || rating > 5) {
-      return res.status(400).json({ success: false, message: "Rating must be 1-5" });
+      return res.status(400).json({
+        success: false,
+        message: "Rating must be between 1 and 5",
+      });
     }
 
-    // CHECK BOOK
     const book = await Book.findById(bookId);
+
     if (!book) {
-      return res.status(404).json({ success: false, message: "Book not found" });
+      return res.status(404).json({
+        success: false,
+        message: "Book not found",
+      });
     }
 
-    // PREVENT DUPLICATE (only pending/approved)
+    // PREVENT DUPLICATE REVIEW
     const existing = await Review.findOne({
       user: userId,
       book: bookId,
-      status: { $in: ["pending", "approved"] },
     });
 
     if (existing) {
-      return res.status(400).json({ success: false, message: "Already reviewed" });
+      return res.status(400).json({
+        success: false,
+        message: "You already reviewed this book",
+      });
     }
 
     const review = await Review.create({
@@ -46,29 +57,35 @@ const addReview = async (req, res) => {
       book: bookId,
       rating,
       comment,
-      status: "pending",
+      status: "approved", 
     });
 
     res.status(201).json({
       success: true,
-      message: "Review submitted for approval",
+      message: "Review added successfully",
       data: review,
     });
 
   } catch (error) {
     console.error("Add Review Error:", error);
-    res.status(500).json({ success: false, message: error.message });
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
   }
 };
 
 
-/*GET APPROVED REVIEWS (USER SIDE)*/
+// GET REVIEWS
 const getReviews = async (req, res) => {
   try {
     const { bookId } = req.params;
 
     if (!mongoose.Types.ObjectId.isValid(bookId)) {
-      return res.status(400).json({ success: false, message: "Invalid book ID" });
+      return res.status(400).json({
+        success: false,
+        message: "Invalid book ID",
+      });
     }
 
     const reviews = await Review.find({
@@ -76,8 +93,7 @@ const getReviews = async (req, res) => {
       status: "approved",
     })
       .populate("user", "name")
-      .sort({ createdAt: -1 })
-      .lean();
+      .sort({ createdAt: -1 });
 
     res.status(200).json({
       success: true,
@@ -86,18 +102,24 @@ const getReviews = async (req, res) => {
 
   } catch (error) {
     console.error("Get Reviews Error:", error);
-    res.status(500).json({ success: false, message: "Internal server error" });
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
   }
 };
 
 
-/*GET AVERAGE RATING*/
+// GET AVERAGE RATING
 const getAverageRating = async (req, res) => {
   try {
     const { bookId } = req.params;
 
     if (!mongoose.Types.ObjectId.isValid(bookId)) {
-      return res.status(400).json({ success: false, message: "Invalid book ID" });
+      return res.status(400).json({
+        success: false,
+        message: "Invalid book ID",
+      });
     }
 
     const result = await Review.aggregate([
@@ -123,32 +145,6 @@ const getAverageRating = async (req, res) => {
 
   } catch (error) {
     console.error("Average Rating Error:", error);
-    res.status(500).json({ success: false, message: error.message });
-  }
-};
-
-
-/*ADMIN - GET PENDING REVIEWS*/
-const getPendingReviews = async (req, res) => {
-  try {
-    const reviews = await Review.find({ status: "pending" })
-      .populate("user", "name")
-      .populate("book", "title")
-      .lean();
-
-    if (!reviews) {
-      return res.status(200).json({ success: true, data: [] });
-    }
-
-    const safe = reviews.filter(r => r.user && r.book);
-
-    res.status(200).json({
-      success: true,
-      data: safe,
-    });
-
-  } catch (error) {
-    console.error("Pending Reviews Error:", error);
     res.status(500).json({
       success: false,
       message: error.message,
@@ -156,69 +152,8 @@ const getPendingReviews = async (req, res) => {
   }
 };
 
-/*ADMIN - APPROVE REVIEW*/
-const approveReview = async (req, res) => {
-  try {
-    const { id } = req.params;
-
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(400).json({ success: false, message: "Invalid review ID" });
-    }
-
-    const review = await Review.findById(id);
-
-    if (!review) {
-      return res.status(404).json({ success: false, message: "Review not found" });
-    }
-
-    review.status = "approved";
-    await review.save();
-
-    res.status(200).json({
-      success: true,
-      message: "Review approved",
-    });
-
-  } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
-  }
-};
-
-
-/*ADMIN - REJECT REVIEW*/
-const rejectReview = async (req, res) => {
-  try {
-    const { id } = req.params;
-
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(400).json({ success: false, message: "Invalid review ID" });
-    }
-
-    const review = await Review.findById(id);
-
-    if (!review) {
-      return res.status(404).json({ success: false, message: "Review not found" });
-    }
-
-    review.status = "rejected";
-    await review.save();
-
-    res.status(200).json({
-      success: true,
-      message: "Review rejected",
-    });
-
-  } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
-  }
-};
-
-
 module.exports = {
   addReview,
   getReviews,
   getAverageRating,
-  getPendingReviews,
-  approveReview,
-  rejectReview,
 };

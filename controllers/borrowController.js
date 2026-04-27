@@ -1,3 +1,4 @@
+const mongoose = require("mongoose");
 const Borrow = require("../models/borrowModel");
 const Book = require("../models/bookModel");
 const Reservation = require("../models/reservationModel");
@@ -16,20 +17,38 @@ const borrowBook = async (req, res) => {
     }
 
     const { bookId } = req.params;
+
+    // VALIDATE ID
     if (!mongoose.Types.ObjectId.isValid(bookId)) {
-    return res.status(400).json({ message: "Invalid book ID" });
+      return res.status(400).json({ message: "Invalid book ID" });
     }
 
     const book = await Book.findById(bookId);
+
     if (!book) {
       return res.status(404).json({ message: "Book not found" });
     }
 
     if (book.status !== "Available") {
-      return res.status(400).json({ message: "Book not available" });
+      return res.status(400).json({
+        message: "Book already borrowed or not available",
+      });
     }
 
-    // Due date = 7 days
+    // PREVENT DUPLICATE BORROW
+    const existing = await Borrow.findOne({
+      borrower: userId,
+      book: bookId,
+      status: "borrowed",
+    });
+
+    if (existing) {
+      return res.status(400).json({
+        message: "You already borrowed this book",
+      });
+    }
+
+    // DUE DATE (7 DAYS)
     const dueDate = new Date();
     dueDate.setDate(dueDate.getDate() + 7);
 
@@ -37,21 +56,28 @@ const borrowBook = async (req, res) => {
       borrower: userId,
       book: bookId,
       dueDate,
+      status: "borrowed",
     });
 
+    // UPDATE BOOK STATUS
     book.status = "Borrowed";
     await book.save();
 
     res.status(201).json({
+      success: true,
       message: "Book borrowed successfully",
-      borrow,
+      data: borrow,
     });
 
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: err.message });
+    console.error("Borrow Error:", err);
+    res.status(500).json({
+      success: false,
+      message: err.message,
+    });
   }
 };
+
 
 // RETURN BOOK
 const returnBook = async (req, res) => {
@@ -64,6 +90,10 @@ const returnBook = async (req, res) => {
 
     const { borrowId } = req.params;
     const userId = req.userId;
+
+    if (!mongoose.Types.ObjectId.isValid(borrowId)) {
+      return res.status(400).json({ message: "Invalid borrow ID" });
+    }
 
     const record = await Borrow.findById(borrowId);
 
@@ -86,7 +116,7 @@ const returnBook = async (req, res) => {
 
     const book = await Book.findById(record.book);
 
-    // RESERVATION HANDLING
+    // RESERVATION LOGIC
     const next = await Reservation.findOne({
       book: record.book,
       status: "waiting",
@@ -111,21 +141,25 @@ const returnBook = async (req, res) => {
 
       next.status = "notified";
       await next.save();
-
-      book.status = "Available";
-    } else {
-      book.status = "Available";
     }
 
+    book.status = "Available";
     await book.save();
 
-    res.json({ message: "Book returned successfully" });
+    res.json({
+      success: true,
+      message: "Book returned successfully",
+    });
 
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: err.message });
+    console.error("Return Error:", err);
+    res.status(500).json({
+      success: false,
+      message: err.message,
+    });
   }
 };
+
 
 // GET MY BORROWINGS
 const getMyBorrowings = async (req, res) => {
@@ -141,13 +175,13 @@ const getMyBorrowings = async (req, res) => {
     });
 
   } catch (err) {
+    console.error("Get Borrowings Error:", err);
     res.status(500).json({
       success: false,
       message: err.message,
     });
   }
 };
-
 
 module.exports = {
   borrowBook,
