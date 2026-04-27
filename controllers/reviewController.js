@@ -152,8 +152,38 @@ const getAverageRating = async (req, res) => {
   }
 };
 
+const getPendingReviews = async (req, res) => {
+  try {
+    const reviews = await Review.find({ status: "pending" }).populate("book user");
+    res.status(200).json({ success: true, data: reviews });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+const approveReview = async (req, res) => {
+  try {
+    const review = await Review.findByIdAndUpdate(req.params.id, { status: "approved" }, { new: true });
+    res.status(200).json({ success: true, data: review });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+const rejectReview = async (req, res) => {
+  try {
+    const review = await Review.findByIdAndUpdate(req.params.id, { status: "rejected" }, { new: true });
+    res.status(200).json({ success: true, data: review });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
 module.exports = {
   addReview,
   getReviews,
-  getAverageRating,     
+  getAverageRating,
+  getPendingReviews,
+  approveReview,
+  rejectReview,
 };

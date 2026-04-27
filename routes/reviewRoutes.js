@@ -7,6 +7,9 @@ const {
   addReview,
   getReviews,
   getAverageRating,
+  getPendingReviews,
+  approveReview,
+  rejectReview,
 } = require("../controllers/reviewController");
 
 // ADMIN
