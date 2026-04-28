@@ -66,6 +66,7 @@ const borrowBook = async (req, res) => {
     });
 
     book.status = "Borrowed";
+    book.borrowedBy = userId;
     await book.save();
 
     res.status(201).json({
@@ -160,6 +161,7 @@ const returnBook = async (req, res) => {
     }
 
     book.status = "Available";
+    book.borrowedBy = null;
     await book.save();
 
     res.json({
