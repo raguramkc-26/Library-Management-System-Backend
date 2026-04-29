@@ -40,6 +40,8 @@ const borrowBook = async (req, res) => {
         message: "Book not available",
       });
     }
+       book.status = "Borrowed";
+       await book.save();
 
     // prevent duplicate borrow
     const alreadyBorrowed = await Borrow.findOne({
