@@ -34,7 +34,7 @@ const createBook = async (req, res) => {
     // IMAGE HANDLING 
    let image = "";
   if (req.file) {
-  image = `/uploads/${req.file.filename}`;
+  image = req.file.path;
  }
     const book = await Book.create({
       title,

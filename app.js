@@ -42,8 +42,6 @@ app.use(cookieParser());
 app.use(logger);
 
 
-// STATIC FILES 
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 
 // HEALTH CHECK ROUTE
