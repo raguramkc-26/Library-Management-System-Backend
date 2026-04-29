@@ -56,6 +56,12 @@ borrowedBy: {
   type: mongoose.Schema.Types.ObjectId,
   ref: "User",
   default: null,
+},
+year: {
+    type: Number,
+    required: true,
+    min: 1000,
+    max: new Date().getFullYear(),
 }
 });
 module.exports = mongoose.model("Book", bookSchema);
