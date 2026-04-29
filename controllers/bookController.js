@@ -3,12 +3,12 @@ const Book = require("../models/bookModel");
 // CREATE
 const createBook = async (req, res) => {
   try {
-    const { title, author, genre, description, year } = req.body;
+    const { title, author, genre, description, year, isbn } = req.body;
 
-    if (!title || !author || !year) {
+    if (!title || !author || !year || !isbn) {
       return res.status(400).json({
         success: false,
-        message: "Title,Author and Year required",
+        message: "Title, Author, Year and ISBN required",
       });
     }
 
@@ -21,6 +21,7 @@ const createBook = async (req, res) => {
       genre,
       description,
       year,
+      isbn,
       image,
       status: "Available",
     });
