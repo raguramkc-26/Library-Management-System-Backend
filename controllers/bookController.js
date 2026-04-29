@@ -1,17 +1,35 @@
 const Book = require("../models/bookModel");
 
-// CREATE
+// CREATE BOOK
 const createBook = async (req, res) => {
   try {
     const { title, author, genre, description, year, isbn } = req.body;
 
+    // VALIDATION
     if (!title || !author || !year || !isbn) {
       return res.status(400).json({
         success: false,
-        message: "Title, Author, Year and ISBN required",
+        message: "Title, Author, Year and ISBN are required",
       });
     }
 
+    if (year < 1000 || year > new Date().getFullYear()) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid year",
+      });
+    }
+
+    // DUPLICATE CHECK
+    const existing = await Book.findOne({ isbn });
+    if (existing) {
+      return res.status(400).json({
+        success: false,
+        message: "ISBN already exists",
+      });
+    }
+
+    // IMAGE
     let image = "";
     if (req.file) image = req.file.path;
 
@@ -26,20 +44,36 @@ const createBook = async (req, res) => {
       status: "Available",
     });
 
-    res.status(201).json({
+    return res.status(201).json({
       success: true,
       data: book,
     });
 
   } catch (err) {
-    res.status(500).json({
+    console.error("CREATE BOOK ERROR:", err);
+
+    // duplicate key fallback
+    if (err.code === 11000) {
+      return res.status(400).json({
+        success: false,
+        message: "ISBN already exists",
+      });
+    }
+
+    // mongoose validation
+    if (err.name === "ValidationError") {
+      return res.status(400).json({
+        success: false,
+        message: Object.values(err.errors)[0].message,
+      });
+    }
+
+    return res.status(500).json({
       success: false,
-      message: "Failed to create book",
+      message: "Server error while creating book",
     });
   }
 };
-
-
 // GET ALL 
 const getBooks = async (req, res) => {
   try {
