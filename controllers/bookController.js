@@ -32,11 +32,10 @@ const createBook = async (req, res) => {
     }
 
     // IMAGE HANDLING 
-    let image = "";
-    if (req.file) {
-      image = req.file.path; // Cloudinary URL
-    }
-
+   let image = "";
+  if (req.file) {
+  image = `/uploads/${req.file.filename}`;
+ }
     const book = await Book.create({
       title,
       author,
