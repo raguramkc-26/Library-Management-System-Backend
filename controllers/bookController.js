@@ -3,7 +3,13 @@ const Book = require("../models/bookModel");
 // CREATE BOOK
 const createBook = async (req, res) => {
   try {
-    const { title, author, genre, description, year, isbn } = req.body;
+    console.log("BODY:", req.body);
+    console.log("FILE:", req.file);
+
+    let { title, author, genre, description, year, isbn } = req.body;
+
+    // Convert year properly
+    year = Number(year);
 
     // VALIDATION
     if (!title || !author || !year || !isbn) {
@@ -13,12 +19,15 @@ const createBook = async (req, res) => {
       });
     }
 
-    if (year < 1000 || year > new Date().getFullYear()) {
+    if (isNaN(year) || year < 1000 || year > new Date().getFullYear()) {
       return res.status(400).json({
         success: false,
         message: "Invalid year",
       });
     }
+
+    // ISBN cleanup (important)
+    isbn = isbn.trim();
 
     // DUPLICATE CHECK
     const existing = await Book.findOne({ isbn });
@@ -31,11 +40,13 @@ const createBook = async (req, res) => {
 
     // IMAGE
     let image = "";
-    if (req.file) image = req.file.path;
+    if (req.file) {
+      image = req.file.path;
+    }
 
     const book = await Book.create({
-      title,
-      author,
+      title: title.trim(),
+      author: author.trim(),
       genre,
       description,
       year,
@@ -52,7 +63,6 @@ const createBook = async (req, res) => {
   } catch (err) {
     console.error("CREATE BOOK ERROR:", err);
 
-    // duplicate key fallback
     if (err.code === 11000) {
       return res.status(400).json({
         success: false,
@@ -60,7 +70,6 @@ const createBook = async (req, res) => {
       });
     }
 
-    // mongoose validation
     if (err.name === "ValidationError") {
       return res.status(400).json({
         success: false,
