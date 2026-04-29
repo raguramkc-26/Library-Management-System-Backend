@@ -2,10 +2,11 @@ require("dotenv").config();
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+const path = require("path");
 
 const logger = require("./middlewares/logger");
 const errorRoute = require("./middlewares/errorRoute");
-const upload = require("./middlewares/upload");
+
 const authRouter = require("./routes/authRoutes");
 const bookRouter = require("./routes/bookRoutes");
 const borrowRouter = require("./routes/borrowRoutes");
@@ -18,22 +19,40 @@ const adminRoutes = require("./routes/adminRoutes");
 
 const app = express();
 
-// CORS
+
+// CORS 
 app.use(
   cors({
-    origin:[ "http://localhost:5173","https://librarymanagemsystem.netlify.app" ],
+    origin: [
+      "http://localhost:5173",
+      "https://librarymanagemsystem.netlify.app",
+    ],
     credentials: true,
   })
 );
 
-// Parsers
+
+// Body parsers
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+
 
 // Logger
 app.use(logger);
 
-// Routes
+
+// STATIC FILES 
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
+
+// HEALTH CHECK ROUTE
+app.get("/", (req, res) => {
+  res.send("API is running ");
+});
+
+
+// ROUTES
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/books", bookRouter);
 app.use("/api/v1/borrow", borrowRouter);
@@ -43,7 +62,9 @@ app.use("/api/v1/reviews", reviewRouter);
 app.use("/api/v1/payment", paymentRoutes);
 app.use("/api/v1/admin", adminRoutes);
 app.use("/api/v1/notifications", notificationRoutes);
-// Test route
+
+
+// TEST EMAIL
 app.get("/test-email", async (req, res) => {
   const sendMail = require("./utils/email");
 
@@ -56,7 +77,7 @@ app.get("/test-email", async (req, res) => {
   res.send("Email sent");
 });
 
-// Error handler 
 app.use(errorRoute);
+
 
 module.exports = app;
