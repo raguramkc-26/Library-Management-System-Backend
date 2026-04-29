@@ -3,24 +3,21 @@ const Book = require("../models/bookModel");
 // CREATE BOOK
 const createBook = async (req, res) => {
   try {
-    console.log("BODY:", req.body);
-    console.log("FILE:", req.file);
-
     const { title, author, genre, description, year, isbn } = req.body;
 
-    if (!title || !author || !year || !isbn || !description) {
+    if (!title || !author || !year || !isbn) {
       return res.status(400).json({
-        success: false,
-        message: "All required fields missing",
+        message: "Title, Author, Year and ISBN are required",
       });
+    }
+
+    if (year < 1000 || year > new Date().getFullYear()) {
+      return res.status(400).json({ message: "Invalid year" });
     }
 
     const existing = await Book.findOne({ isbn });
     if (existing) {
-      return res.status(400).json({
-        success: false,
-        message: "ISBN already exists",
-      });
+      return res.status(400).json({ message: "ISBN already exists" });
     }
 
     let image = "";
@@ -31,24 +28,17 @@ const createBook = async (req, res) => {
       author,
       genre,
       description,
-      year: Number(year), // 🔥 FIX
+      year,
       isbn,
       image,
       status: "Available",
     });
 
-    res.status(201).json({
-      success: true,
-      data: book,
-    });
+    res.status(201).json(book);
 
   } catch (err) {
     console.error("CREATE BOOK ERROR:", err);
-
-    res.status(500).json({
-      success: false,
-      message: err.message || "Server error",
-    });
+    res.status(500).json({ message: err.message });
   }
 };
 // GET ALL 
