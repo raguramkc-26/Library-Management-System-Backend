@@ -6,30 +6,15 @@ const createBook = async (req, res) => {
     console.log("BODY:", req.body);
     console.log("FILE:", req.file);
 
-    let { title, author, genre, description, year, isbn } = req.body;
+    const { title, author, genre, description, year, isbn } = req.body;
 
-    // Convert year properly
-    year = Number(year);
-
-    // VALIDATION
-    if (!title || !author || !year || !isbn) {
+    if (!title || !author || !year || !isbn || !description) {
       return res.status(400).json({
         success: false,
-        message: "Title, Author, Year and ISBN are required",
+        message: "All required fields missing",
       });
     }
 
-    if (isNaN(year) || year < 1000 || year > new Date().getFullYear()) {
-      return res.status(400).json({
-        success: false,
-        message: "Invalid year",
-      });
-    }
-
-    // ISBN cleanup (important)
-    isbn = isbn.trim();
-
-    // DUPLICATE CHECK
     const existing = await Book.findOne({ isbn });
     if (existing) {
       return res.status(400).json({
@@ -38,24 +23,21 @@ const createBook = async (req, res) => {
       });
     }
 
-    // IMAGE
     let image = "";
-    if (req.file) {
-      image = req.file.path;
-    }
+    if (req.file) image = req.file.path;
 
     const book = await Book.create({
-      title: title.trim(),
-      author: author.trim(),
+      title,
+      author,
       genre,
       description,
-      year,
+      year: Number(year), // 🔥 FIX
       isbn,
       image,
       status: "Available",
     });
 
-    return res.status(201).json({
+    res.status(201).json({
       success: true,
       data: book,
     });
@@ -63,23 +45,9 @@ const createBook = async (req, res) => {
   } catch (err) {
     console.error("CREATE BOOK ERROR:", err);
 
-    if (err.code === 11000) {
-      return res.status(400).json({
-        success: false,
-        message: "ISBN already exists",
-      });
-    }
-
-    if (err.name === "ValidationError") {
-      return res.status(400).json({
-        success: false,
-        message: Object.values(err.errors)[0].message,
-      });
-    }
-
-    return res.status(500).json({
+    res.status(500).json({
       success: false,
-      message: "Server error while creating book",
+      message: err.message || "Server error",
     });
   }
 };
