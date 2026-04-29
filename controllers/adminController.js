@@ -4,60 +4,80 @@ const User = require("../models/userModel");
 const Borrow = require("../models/borrowModel");
 const Notification = require("../models/notificationModel");
 
-// ADMIN STATS
 const getAdminStats = async (req, res) => {
   try {
-    const totalBooks = await Book.countDocuments();
-    const totalUsers = await User.countDocuments();
-
-    const borrowed = await Borrow.countDocuments({ status: "borrowed" });
-
-    const overdue = await Borrow.countDocuments({
-      status: "borrowed",
-      dueDate: { $exists: true, $lt: new Date() },
-    });
-
-    const revenueData = await Borrow.aggregate([
-      { $match: { fineAmount: { $exists: true, $gt: 0 } } },
-      { $group: { _id: null, total: { $sum: "$fineAmount" } } },
-    ]);
+    const [totalBooks, totalUsers, borrowed, overdue, revenueData] =
+      await Promise.all([
+        Book.countDocuments(),
+        User.countDocuments(),
+        Borrow.countDocuments({ status: "borrowed" }),
+        Borrow.countDocuments({
+          status: "borrowed",
+          dueDate: { $lt: new Date() },
+        }),
+        Borrow.aggregate([
+          { $match: { fineAmount: { $gt: 0 } } },
+          { $group: { _id: null, total: { $sum: "$fineAmount" } } },
+        ]),
+      ]);
 
     const revenue = revenueData[0]?.total || 0;
 
-    res.json({ totalBooks, totalUsers, borrowed, overdue, revenue });
-
+    res.json({
+      success: true,
+      data: {
+        books: totalBooks,
+        users: totalUsers,
+        borrowed,
+        overdue,
+        revenue,
+      },
+    });
   } catch (err) {
-    res.status(500).json({ message: "Server error" });
+    console.error("Admin Stats Error:", err);
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch stats",
+    });
   }
 };
 
-// MONTHLY STATS
+
 const getMonthlyStats = async (req, res) => {
   try {
     const data = await Borrow.aggregate([
       {
         $group: {
           _id: { $month: "$createdAt" },
-          total: { $sum: 1 },
+          count: { $sum: 1 },
         },
       },
       { $sort: { "_id": 1 } },
     ]);
 
-    res.json(data);
-
+    res.json({
+      success: true,
+      data,
+    });
   } catch (err) {
-    res.status(500).json({ message: "Error fetching stats" });
+    console.error("Monthly Stats Error:", err);
+    res.status(500).json({
+      success: false,
+      message: "Error fetching stats",
+    });
   }
 };
 
-// NOTIFY ALL USERS
+
 const notifyAllUsers = async (req, res) => {
   try {
     const { message } = req.body;
 
-    if (!message || !message.trim()) {
-      return res.status(400).json({ message: "Message required" });
+    if (!message?.trim()) {
+      return res.status(400).json({
+        success: false,
+        message: "Message is required",
+      });
     }
 
     const users = await User.find().select("_id");
@@ -71,63 +91,45 @@ const notifyAllUsers = async (req, res) => {
     await Notification.insertMany(notifications);
 
     res.json({
+      success: true,
       message: "Notification sent to all users",
       count: notifications.length,
     });
-
   } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-};
-
-// ADD BOOK (ADMIN)
-const addBook = async (req, res) => {
-  try {
-    const { title, author, genre, description } = req.body;
-
-    let image = "";
-
-    if (req.file) {
-      image = `data:${req.file.mimetype};base64,${req.file.buffer.toString("base64")}`;
-    }
-
-    const book = await Book.create({
-      title,
-      author,
-      genre,
-      description,
-      image,
-      status: "Available",
+    console.error("Notify Error:", err);
+    res.status(500).json({
+      success: false,
+      message: "Failed to send notifications",
     });
-
-    res.status(201).json(book);
-
-  } catch (err) {
-    res.status(500).json({ message: "Failed to create book" });
   }
 };
 
-// RECENT ACTIVITY
 const getRecentActivity = async (req, res) => {
   try {
     const data = await Borrow.find()
       .populate("book", "title")
+      .populate("borrower", "name")
       .sort({ createdAt: -1 })
       .limit(5);
 
-    res.json(data);
-
+    res.json({
+      success: true,
+      data,
+    });
   } catch (err) {
-    res.status(500).json({ message: "Failed to fetch activity" });
+    console.error("Recent Activity Error:", err);
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch activity",
+    });
   }
 };
 
-// TOP BOOKS
 const getTopBooks = async (req, res) => {
   try {
     const data = await Borrow.aggregate([
-      { $group: { _id: "$book", count: { $sum: 1 } } },
-      { $sort: { count: -1 } },
+      { $group: { _id: "$book", borrowCount: { $sum: 1 } } },
+      { $sort: { borrowCount: -1 } },
       { $limit: 5 },
       {
         $lookup: {
@@ -140,14 +142,19 @@ const getTopBooks = async (req, res) => {
       { $unwind: "$book" },
     ]);
 
-    res.json(data);
-
+    res.json({
+      success: true,
+      data,
+    });
   } catch (err) {
-    res.status(500).json({ message: "Failed to fetch top books" });
+    console.error("Top Books Error:", err);
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch top books",
+    });
   }
 };
 
-// USERS MANAGEMENT
 // GET ALL USERS
 const getAllUsers = async (req, res) => {
   try {
@@ -155,31 +162,43 @@ const getAllUsers = async (req, res) => {
       .select("-password")
       .sort({ createdAt: -1 });
 
-    res.status(200).json(users);
-
+    res.json({
+      success: true,
+      data: users,
+    });
   } catch (err) {
-    res.status(500).json({ message: "Failed to fetch users" });
+    console.error("Get Users Error:", err);
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch users",
+    });
   }
 };
 
 
-// UPDATE USER ROLE
+// UPDATE ROLE
 const updateUserRole = async (req, res) => {
   try {
     const { id } = req.params;
     const { role } = req.body;
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(400).json({ message: "Invalid user ID" });
+      return res.status(400).json({
+        success: false,
+        message: "Invalid user ID",
+      });
     }
 
-    const allowedRoles = ["user", "admin"];
-    if (!allowedRoles.includes(role)) {
-      return res.status(400).json({ message: "Invalid role" });
+    if (!["user", "admin"].includes(role)) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid role",
+      });
     }
 
     if (req.userId === id) {
       return res.status(400).json({
+        success: false,
         message: "You cannot change your own role",
       });
     }
@@ -191,13 +210,22 @@ const updateUserRole = async (req, res) => {
     ).select("-password");
 
     if (!user) {
-      return res.status(404).json({ message: "User not found" });
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
     }
 
-    res.json(user);
-
+    res.json({
+      success: true,
+      data: user,
+    });
   } catch (err) {
-    res.status(500).json({ message: "Failed to update role" });
+    console.error("Update Role Error:", err);
+    res.status(500).json({
+      success: false,
+      message: "Failed to update role",
+    });
   }
 };
 
@@ -208,11 +236,15 @@ const deleteUser = async (req, res) => {
     const { id } = req.params;
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(400).json({ message: "Invalid user ID" });
+      return res.status(400).json({
+        success: false,
+        message: "Invalid user ID",
+      });
     }
 
     if (req.userId === id) {
       return res.status(400).json({
+        success: false,
         message: "You cannot delete your own account",
       });
     }
@@ -220,21 +252,30 @@ const deleteUser = async (req, res) => {
     const user = await User.findByIdAndDelete(id);
 
     if (!user) {
-      return res.status(404).json({ message: "User not found" });
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
     }
 
-    res.json({ message: "User deleted successfully" });
-
+    res.json({
+      success: true,
+      message: "User deleted successfully",
+    });
   } catch (err) {
-    res.status(500).json({ message: "Failed to delete user" });
+    console.error("Delete User Error:", err);
+    res.status(500).json({
+      success: false,
+      message: "Failed to delete user",
+    });
   }
 };
+
 
 module.exports = {
   getAdminStats,
   getMonthlyStats,
   notifyAllUsers,
-  addBook,
   getRecentActivity,
   getTopBooks,
   getAllUsers,
