@@ -20,6 +20,7 @@ const createBook = async (req, res) => {
       author,
       genre,
       description,
+      year,
       image,
       status: "Available",
     });
