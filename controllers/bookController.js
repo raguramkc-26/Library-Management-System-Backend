@@ -1,11 +1,11 @@
 const Book = require("../models/bookModel");
 
-// CREATE BOOK
+// ================= CREATE BOOK =================
 const createBook = async (req, res) => {
   try {
     const { title, author, genre, description, year, isbn } = req.body;
 
-    // STRICT VALIDATION
+    // Validation
     if (!title || !author || !year || !isbn || !description) {
       return res.status(400).json({
         success: false,
@@ -22,7 +22,7 @@ const createBook = async (req, res) => {
       });
     }
 
-    // CHECK DUPLICATE ISBN
+    // Check duplicate ISBN
     const existing = await Book.findOne({ isbn });
     if (existing) {
       return res.status(400).json({
@@ -31,11 +31,12 @@ const createBook = async (req, res) => {
       });
     }
 
-    // IMAGE HANDLING 
-   let image = "";
-  if (req.file) {
-  image = req.file.path;
- }
+    // Image
+    let image = "";
+    if (req.file) {
+      image = req.file.path;
+    }
+
     const book = await Book.create({
       title,
       author,
@@ -50,13 +51,12 @@ const createBook = async (req, res) => {
     return res.status(201).json({
       success: true,
       message: "Book created successfully",
-      data: books,
+      data: book, // ✅ FIXED
     });
 
   } catch (err) {
     console.error("CREATE BOOK ERROR:", err);
 
-    // Mongo duplicate safety
     if (err.code === 11000) {
       return res.status(400).json({
         success: false,
@@ -64,7 +64,6 @@ const createBook = async (req, res) => {
       });
     }
 
-    // Mongoose validation
     if (err.name === "ValidationError") {
       return res.status(400).json({
         success: false,
@@ -74,17 +73,21 @@ const createBook = async (req, res) => {
 
     return res.status(500).json({
       success: false,
-      message: "Server error while adding book",
+      message: err.message || "Server error while adding book",
     });
   }
 };
-// GET ALL 
+
+
+// ================= GET ALL BOOKS =================
 const getBooks = async (req, res) => {
   try {
     const { keyword, genre, available, page = 1 } = req.query;
+
     const pageNumber = Number(page) || 1;
     const limit = 6;
     const skip = (pageNumber - 1) * limit;
+
     const query = {};
 
     if (keyword) {
@@ -99,26 +102,27 @@ const getBooks = async (req, res) => {
     if (available === "true") query.status = "Available";
     if (available === "false") query.status = "Borrowed";
 
-
     const books = await Book.find(query).skip(skip).limit(limit);
     const total = await Book.countDocuments(query);
 
-    res.json({
+    return res.json({
       success: true,
-      data: book,
+      data: books, // ✅ FIXED
       totalPages: Math.ceil(total / limit),
     });
 
-  } catch {
-    res.status(500).json({
+  } catch (err) {
+    console.error("GET BOOKS ERROR:", err); // ✅ FIXED
+
+    return res.status(500).json({
       success: false,
-      message: "Failed to fetch books",
+      message: err.message || "Failed to fetch books",
     });
   }
 };
 
 
-// GET ONE
+// ================= GET SINGLE BOOK =================
 const getBookById = async (req, res) => {
   try {
     const book = await Book.findById(req.params.id);
@@ -130,21 +134,23 @@ const getBookById = async (req, res) => {
       });
     }
 
-    res.json({
+    return res.json({
       success: true,
       data: book,
     });
 
-  } catch {
-    res.status(500).json({
+  } catch (err) {
+    console.error("GET BOOK ERROR:", err);
+
+    return res.status(500).json({
       success: false,
-      message: "Error fetching book",
+      message: err.message || "Error fetching book",
     });
   }
 };
 
 
-// UPDATE
+// ================= UPDATE BOOK =================
 const updateBook = async (req, res) => {
   try {
     const updateData = { ...req.body };
@@ -166,21 +172,23 @@ const updateBook = async (req, res) => {
       });
     }
 
-    res.json({
+    return res.json({
       success: true,
       data: book,
     });
 
-  } catch {
-    res.status(500).json({
+  } catch (err) {
+    console.error("UPDATE BOOK ERROR:", err);
+
+    return res.status(500).json({
       success: false,
-      message: "Update failed",
+      message: err.message || "Update failed",
     });
   }
 };
 
 
-// DELETE
+// ================= DELETE BOOK =================
 const deleteBook = async (req, res) => {
   try {
     const book = await Book.findByIdAndDelete(req.params.id);
@@ -192,18 +200,21 @@ const deleteBook = async (req, res) => {
       });
     }
 
-    res.json({
+    return res.json({
       success: true,
       message: "Book deleted",
     });
 
-  } catch {
-    res.status(500).json({
+  } catch (err) {
+    console.error("DELETE BOOK ERROR:", err);
+
+    return res.status(500).json({
       success: false,
-      message: "Delete failed",
+      message: err.message || "Delete failed",
     });
   }
 };
+
 
 module.exports = {
   createBook,
