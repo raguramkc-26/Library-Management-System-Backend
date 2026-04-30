@@ -50,7 +50,7 @@ const createBook = async (req, res) => {
     return res.status(201).json({
       success: true,
       message: "Book created successfully",
-      data: book,
+      data: books,
     });
 
   } catch (err) {
@@ -84,7 +84,7 @@ const getBooks = async (req, res) => {
     const { keyword, genre, available, page = 1 } = req.query;
     const pageNumber = Number(page) || 1;
     const limit = 6;
-    const skip = (page - 1) * limit;
+    const skip = (pageNumber - 1) * limit;
     const query = {};
 
     if (keyword) {
@@ -105,7 +105,7 @@ const getBooks = async (req, res) => {
 
     res.json({
       success: true,
-      data: books,
+      data: book,
       totalPages: Math.ceil(total / limit),
     });
 
