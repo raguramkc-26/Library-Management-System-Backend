@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 5001;
 const EMAIL_USER = process.env.EMAIL_USER;
 const GOOGLE_APP_PASSWORD = process.env.GOOGLE_APP_PASSWORD;
 const JWT_SECRET = process.env.JWT_SECRET || 'cat';
-const NODE_ENV = process.env.NODE_ENV || 'development';
+const NODE_ENV = process.env.NODE_ENV || 'production';
 
 module.exports = {
     MONGODB_URI,
