@@ -82,7 +82,9 @@ const createBook = async (req, res) => {
 const getBooks = async (req, res) => {
   try {
     const { keyword, genre, available, page = 1 } = req.query;
-
+    const pageNumber = Number(page) || 1;
+    const limit = 6;
+    const skip = (page - 1) * limit;
     const query = {};
 
     if (keyword) {
@@ -97,15 +99,13 @@ const getBooks = async (req, res) => {
     if (available === "true") query.status = "Available";
     if (available === "false") query.status = "Borrowed";
 
-    const limit = 6;
-    const skip = (page - 1) * limit;
 
     const books = await Book.find(query).skip(skip).limit(limit);
     const total = await Book.countDocuments(query);
 
     res.json({
       success: true,
-      books,
+      data: books,
       totalPages: Math.ceil(total / limit),
     });
 
