@@ -162,7 +162,7 @@ const returnBook = async (req, res) => {
       await next.save();
     }
 
-    book.status = "Available";
+    book.status = "available";
     book.borrowedBy = null;
     await book.save();
 
