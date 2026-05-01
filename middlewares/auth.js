@@ -31,8 +31,17 @@ const isAuthenticated = (req, res, next) => {
       });
     }
 
-    req.userId = decoded.userId;
-    req.role = decoded.role;
+    const user = await 
+    user.findById(decoded.userId).select("-password");
+    if (!user) {
+      return res.status(401).json({
+        success: false,
+        message: "user not found",
+      });
+    }
+    req.user = user;
+    req.userId = user._Id;
+    req.role = user.role; 
 
     next();
 

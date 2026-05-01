@@ -4,48 +4,59 @@ const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const sendEmail = require("../utils/email");
 
-const { JWT_SECRET, NODE_ENV } = require("../utils/config");
+const { JWT_SECRET, NODE_ENV, CLIENT_URL } = require("../utils/config");
 
 const authController = {
+
   // REGISTER
   register: async (req, res) => {
     try {
       const { name, email, password } = req.body;
 
       if (!name || !email || !password) {
-        return res.status(400).json({ message: "All fields required" });
+        return res.status(400).json({
+          success: false,
+          message: "All fields required",
+        });
       }
 
       const existingUser = await User.findOne({ email });
       if (existingUser) {
-        return res.status(400).json({ message: "User already exists" });
+        return res.status(400).json({
+          success: false,
+          message: "User already exists",
+        });
       }
 
       const hashedPassword = await bcrypt.hash(password, 10);
 
-      const newUser = await User.create({
+      await User.create({
         name,
         email,
         password: hashedPassword,
       });
 
-      res.status(201).json({ message: "User registered successfully" });
+      res.status(201).json({
+        success: true,
+        message: "User registered successfully",
+      });
 
     } catch (error) {
       res.status(500).json({
+        success: false,
         message: "Error registering user",
-        error: error.message,
       });
     }
   },
 
-  // LOGIN
+  // LOGIN 
   login: async (req, res) => {
     try {
       const { email, password } = req.body;
 
       if (!email || !password) {
         return res.status(400).json({
+          success: false,
           message: "Email and password required",
         });
       }
@@ -53,76 +64,83 @@ const authController = {
       const user = await User.findOne({ email }).select("+password");
 
       if (!user) {
-        return res.status(400).json({ message: "Invalid credentials" });
+        return res.status(400).json({
+          success: false,
+          message: "Invalid credentials",
+        });
       }
 
       const isMatch = await bcrypt.compare(password, user.password);
 
       if (!isMatch) {
-        return res.status(400).json({ message: "Invalid password" });
+        return res.status(400).json({
+          success: false,
+          message: "Invalid credentials",
+        });
       }
 
+      // FIXED TOKEN PAYLOAD
       const token = jwt.sign(
         {
           userId: user._id,
           role: user.role,
         },
         JWT_SECRET,
-        { expiresIn: "1h" }
+        { expiresIn: "7d" } 
       );
 
       res.json({
+        success: true,
         message: "Login successful",
         token,
         user: {
-          id: user._id,
+          _id: user._id,
           name: user.name,
           email: user.email,
-          role: user.role,  
+          role: user.role,
         },
       });
 
     } catch (error) {
       res.status(500).json({
+        success: false,
         message: "Error logging in",
-        error: error.message,
       });
     }
   },
 
-  // GET CURRENT USER
+  // GET CURRENT USER 
   getMe: async (req, res) => {
     try {
-      const user = await User.findById(req.userId).select("-password");
-
-      if (!user) {
-        return res.status(404).json({ message: "User not found" });
+      if (!req.user) {
+        return res.status(401).json({
+          success: false,
+          message: "Unauthorized",
+        });
       }
 
-      res.json({ user });
+      res.json({
+        success: true,
+        user: req.user,
+      });
 
     } catch (error) {
       res.status(500).json({
+        success: false,
         message: "Error fetching user",
-        error: error.message,
       });
     }
   },
 
   // LOGOUT
   logout: async (req, res) => {
-    try {
-      res.json({ message: "Logout successful" });
-
-    } catch (error) {
-      res.status(500).json({
-        message: "Error logging out",
-        error: error.message,
-      });
-    }
+    res.json({
+      success: true,
+      message: "Logout successful",
+    });
   },
 
-  // FORGOT PASSWORD
+  // FORGOT PASSWORD 
   forgotPassword: async (req, res) => {
     try {
       const { email } = req.body;
@@ -130,7 +148,10 @@ const authController = {
       const user = await User.findOne({ email });
 
       if (!user) {
-        return res.status(404).json({ message: "User not found" });
+        return res.status(404).json({
+          success: false,
+          message: "User not found",
+        });
       }
 
       const resetToken = crypto.randomBytes(32).toString("hex");
@@ -141,11 +162,12 @@ const authController = {
         .digest("hex");
 
       user.passwordResetToken = hashedToken;
-      user.passwordResetExpires = Date.now() + 10 * 60 * 1000; // 10 min
+      user.passwordResetExpires = Date.now() + 10 * 60 * 1000;
 
       await user.save();
 
-      const resetURL = `http://localhost:5173/reset-password/${resetToken}`;
+      // FIXED 
+      const resetURL = `${CLIENT_URL}/reset-password/${resetToken}`;
 
       await sendEmail(
         user.email,
@@ -153,12 +175,15 @@ const authController = {
         `Reset your password: ${resetURL}`
       );
 
-      res.json({ message: "Reset link sent to email" });
+      res.json({
+        success: true,
+        message: "Reset link sent to email",
+      });
 
     } catch (error) {
       res.status(500).json({
+        success: false,
         message: "Error sending reset email",
-        error: error.message,
       });
     }
   },
@@ -181,24 +206,26 @@ const authController = {
 
       if (!user) {
         return res.status(400).json({
+          success: false,
           message: "Token invalid or expired",
         });
       }
 
-      const hashedPassword = await bcrypt.hash(password, 10);
-
-      user.password = hashedPassword;
+      user.password = await bcrypt.hash(password, 10);
       user.passwordResetToken = undefined;
       user.passwordResetExpires = undefined;
 
       await user.save();
 
-      res.json({ message: "Password reset successful" });
+      res.json({
+        success: true,
+        message: "Password reset successful",
+      });
 
     } catch (error) {
       res.status(500).json({
+        success: false,
         message: "Error resetting password",
-        error: error.message,
       });
     }
   },
