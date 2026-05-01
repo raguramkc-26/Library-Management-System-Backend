@@ -40,7 +40,7 @@ const borrowBook = async (req, res) => {
         message: "Book not available",
       });
     }
-       book.status = "Borrowed";
+       book.status = "borrowed";
        await book.save();
 
     // prevent duplicate borrow
@@ -67,7 +67,7 @@ const borrowBook = async (req, res) => {
       status: "borrowed",
     });
 
-    book.status = "Borrowed";
+    book.status = "borrowed";
     book.borrowedBy = userId;
     await book.save();
 
@@ -117,7 +117,7 @@ const returnBook = async (req, res) => {
       });
     }
 
-    if (record.borrower.toString() !== userId) {
+    if (record.borrower.toString() !== req.userId.toString()) {
       return res.status(403).json({
         success: false,
         message: "Not authorized",
