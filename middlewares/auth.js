@@ -14,22 +14,7 @@ const isAuthenticated = (req, res, next) => {
     }
 
     const token = authHeader.split(" ")[1];
-
-    if (!token) {
-      return res.status(401).json({
-        success: false,
-        message: "Token missing",
-      });
-    }
-
     const decoded = jwt.verify(token, JWT_SECRET);
-
-    if (!decoded.userId || !decoded.role) {
-      return res.status(401).json({
-        success: false,
-        message: "Invalid token payload",
-      });
-    }
 
     const user = await 
     user.findById(decoded.userId).select("-password");
@@ -40,7 +25,6 @@ const isAuthenticated = (req, res, next) => {
       });
     }
     req.user = user;
-    req.userId = user._Id;
     req.role = user.role; 
 
     next();
