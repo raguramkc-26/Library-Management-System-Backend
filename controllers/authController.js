@@ -4,11 +4,11 @@ const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const sendEmail = require("../utils/email");
 
-const { JWT_SECRET, NODE_ENV, CLIENT_URL } = require("../utils/config");
+const { JWT_SECRET, CLIENT_URL } = require("../utils/config");
 
 const authController = {
 
-  // REGISTER
+  // ================= REGISTER =================
   register: async (req, res) => {
     try {
       const { name, email, password } = req.body;
@@ -16,7 +16,7 @@ const authController = {
       if (!name || !email || !password) {
         return res.status(400).json({
           success: false,
-          message: "All fields required",
+          message: "All fields are required",
         });
       }
 
@@ -42,14 +42,15 @@ const authController = {
       });
 
     } catch (error) {
+      console.error("Register Error:", error);
       res.status(500).json({
         success: false,
-        message: "Error registering user",
+        message: "Server error during registration",
       });
     }
   },
 
-  // LOGIN 
+  // ================= LOGIN =================
   login: async (req, res) => {
     try {
       const { email, password } = req.body;
@@ -79,14 +80,13 @@ const authController = {
         });
       }
 
-      // FIXED TOKEN PAYLOAD
       const token = jwt.sign(
         {
           userId: user._id,
           role: user.role,
         },
         JWT_SECRET,
-        { expiresIn: "7d" } 
+        { expiresIn: "7d" }
       );
 
       res.json({
@@ -102,14 +102,15 @@ const authController = {
       });
 
     } catch (error) {
+      console.error("Login Error:", error);
       res.status(500).json({
         success: false,
-        message: "Error logging in",
+        message: "Server error during login",
       });
     }
   },
 
-  // GET CURRENT USER 
+  // ================= GET CURRENT USER =================
   getMe: async (req, res) => {
     try {
       if (!req.user) {
@@ -125,6 +126,7 @@ const authController = {
       });
 
     } catch (error) {
+      console.error("GetMe Error:", error);
       res.status(500).json({
         success: false,
         message: "Error fetching user",
@@ -132,7 +134,52 @@ const authController = {
     }
   },
 
-  // LOGOUT
+  // ================= UPDATE PROFILE =================
+  updateProfile: async (req, res) => {
+    try {
+      const { name, email } = req.body;
+
+      const user = await User.findById(req.userId);
+
+      if (!user) {
+        return res.status(404).json({
+          success: false,
+          message: "User not found",
+        });
+      }
+
+      // prevent duplicate email
+      if (email && email !== user.email) {
+        const exists = await User.findOne({ email });
+        if (exists) {
+          return res.status(400).json({
+            success: false,
+            message: "Email already in use",
+          });
+        }
+      }
+
+      user.name = name || user.name;
+      user.email = email || user.email;
+
+      await user.save();
+
+      res.json({
+        success: true,
+        message: "Profile updated successfully",
+        user,
+      });
+
+    } catch (error) {
+      console.error("Update Profile Error:", error);
+      res.status(500).json({
+        success: false,
+        message: "Error updating profile",
+      });
+    }
+  },
+
+  // ================= LOGOUT =================
   logout: async (req, res) => {
     res.json({
       success: true,
@@ -140,7 +187,7 @@ const authController = {
     });
   },
 
-  // FORGOT PASSWORD 
+  // ================= FORGOT PASSWORD =================
   forgotPassword: async (req, res) => {
     try {
       const { email } = req.body;
@@ -166,7 +213,6 @@ const authController = {
 
       await user.save();
 
-      // FIXED 
       const resetURL = `${CLIENT_URL}/reset-password/${resetToken}`;
 
       await sendEmail(
@@ -181,6 +227,7 @@ const authController = {
       });
 
     } catch (error) {
+      console.error("Forgot Password Error:", error);
       res.status(500).json({
         success: false,
         message: "Error sending reset email",
@@ -188,7 +235,7 @@ const authController = {
     }
   },
 
-  // RESET PASSWORD
+  // ================= RESET PASSWORD =================
   resetPassword: async (req, res) => {
     try {
       const { token } = req.params;
@@ -223,45 +270,14 @@ const authController = {
       });
 
     } catch (error) {
+      console.error("Reset Password Error:", error);
       res.status(500).json({
         success: false,
         message: "Error resetting password",
       });
     }
   },
+
 };
-
-//update profile
-updateProfile: async (req, res) => {
-  try {
-    const { name, email } = req.body;
-
-    const user = await User.findById(req.userId);
-
-    if (!user) {
-      return res.status(404).json({
-        success: false,
-        message: "User not found",
-      });
-    }
-
-    user.name = name || user.name;
-    user.email = email || user.email;
-
-    await user.save();
-
-    res.json({
-      success: true,
-      message: "Profile updated",
-      user,
-    });
-
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: "Update failed",
-    });
-  }
-},
 
 module.exports = authController;
