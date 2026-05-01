@@ -189,51 +189,53 @@ const authController = {
 
   // ================= FORGOT PASSWORD =================
   forgotPassword: async (req, res) => {
-    try {
-      const { email } = req.body;
+  try {
+    const { email } = req.body;
 
-      const user = await User.findOne({ email });
+    const user = await User.findOne({ email });
 
-      if (!user) {
-        return res.status(404).json({
-          success: false,
-          message: "User not found",
-        });
-      }
-
-      const resetToken = crypto.randomBytes(32).toString("hex");
-
-      const hashedToken = crypto
-        .createHash("sha256")
-        .update(resetToken)
-        .digest("hex");
-
-      user.passwordResetToken = hashedToken;
-      user.passwordResetExpires = Date.now() + 10 * 60 * 1000;
-
-      await user.save();
-
-      const resetURL = `${CLIENT_URL}/reset-password/${resetToken}`;
-
-      await sendEmail(
-        user.email,
-        "Password Reset",
-        `Reset your password: ${resetURL}`
-      );
-
-      res.json({
-        success: true,
-        message: "Reset link sent to email",
-      });
-
-    } catch (error) {
-      console.error("Forgot Password Error:", error);
-      res.status(500).json({
+    if (!user) {
+      return res.status(404).json({
         success: false,
-        message: "Error sending reset email",
+        message: "User not found",
       });
     }
-  },
+
+    const resetToken = crypto.randomBytes(32).toString("hex");
+
+    const hashedToken = crypto
+      .createHash("sha256")
+      .update(resetToken)
+      .digest("hex");
+
+    user.passwordResetToken = hashedToken;
+    user.passwordResetExpires = Date.now() + 10 * 60 * 1000;
+
+    await user.save();
+
+    const resetURL = `${CLIENT_URL}/reset-password/${resetToken}`;
+
+    // 🔥 DO NOT BLOCK RESPONSE
+    sendEmail(
+      user.email,
+      "Password Reset",
+      `Reset your password: ${resetURL}`
+    ).catch(err => console.error("Email error:", err));
+
+    res.json({
+      success: true,
+      message: "Reset link sent (check email)",
+    });
+
+  } catch (error) {
+    console.error("Forgot Password Error:", error);
+
+    res.status(500).json({
+      success: false,
+      message: "Error sending reset email",
+    });
+  }
+},
 
   // ================= RESET PASSWORD =================
   resetPassword: async (req, res) => {
