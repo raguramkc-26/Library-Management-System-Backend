@@ -19,12 +19,12 @@ borrowRouter.use(isAuthenticated);
 borrowRouter.get("/me", getMyBorrowings);
 
 // borrow book
-borrowRouter.post("/borrow/:bookId", borrowBook);
+borrowRouter.post("/:bookId", borrowBook);
 
 // reserve book
-borrowRouter.post("/reserve/:bookId", reserveBook);
+borrowRouter.post("/bookId/reserve", reserveBook);
 
 // return book
-borrowRouter.put("/return/:borrowId", returnBook);
+borrowRouter.put("/:borrowId/return", returnBook);
 
 module.exports = borrowRouter;
