@@ -218,10 +218,7 @@ const authController = {
     await sendEmail({
     to: user.email,
     subject: "Password Reset",
-    html: `
-    <h2>Password Reset</h2>
-    <p>Click below to reset your password:</p>
-    <a href="${resetURL}" target="_blank">${resetURL}</a>
+    html: `<a href="${resetURL}">${resetURL}</a>
    `,
   });
    console.log("Email sent successfully");

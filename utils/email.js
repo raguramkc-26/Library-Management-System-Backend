@@ -1,46 +1,21 @@
-const nodemailer = require("nodemailer");
+const { Resend } = require("resend");
 
-const transporter = nodemailer.createTransport({
-  host:"smtp.gmail.com",
-  port: 587,
-  secure: false,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-  connectionTimeout: 5000,
-  greetingTimeout: 5000,
-  socketTimeout: 5000,
-});
+const resend = new Resend(process.env.RESEND_API_KEY);
 
-transporter.verify()
-.then(() => console.log("Email ready"))
-.catch(err => console.error("Email config error:", err));
-
-// SEND EMAIL FUNCTION
-const sendEmail = async ({ to, subject, text, html }) => {
+const sendEmail = async ({ to, subject, html }) => {
   try {
-    if (!to || !subject || (!text && !html)) {
-      throw new Error("Missing email fields");
-    }
-
-    const mailOptions = {
-      from: `"Library System" <${process.env.EMAIL_USER}>`,
+    const response = await resend.emails.send({
+      from: "Library System <onboarding@resend.dev>",
       to,
       subject,
-      text,
       html,
-    };
+    });
 
-    const info = await transporter.sendMail(mailOptions);
-
-    console.log("Email sent:", info.messageId);
-
-    return info;
-
+    console.log("Email sent:", response);
+    return response;
   } catch (error) {
-    console.error("Email sending failed:", error.message);
-    throw new Error("Email service failed");
+    console.error("Resend error:", error);
+    throw error;
   }
 };
 
