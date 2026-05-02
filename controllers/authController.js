@@ -215,12 +215,15 @@ const authController = {
 
     const resetURL = `${CLIENT_URL}/reset-password/${resetToken}`;
 
-    // 🔥 DO NOT BLOCK RESPONSE
-    sendEmail(
-      user.email,
-      "Password Reset",
-      `Reset your password: ${resetURL}`
-    ).catch(err => console.error("Email error:", err));
+    await sendEmail({
+    to: user.email,
+    subject: "Password Reset",
+    html: `
+    <h2>Password Reset</h2>
+    <p>Click below to reset your password:</p>
+    <a href="${resetURL}" target="_blank">${resetURL}</a>
+   `,
+  });
 
     res.json({
       success: true,
