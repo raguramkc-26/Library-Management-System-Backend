@@ -107,9 +107,12 @@ const returnBook = async (req, res) => {
     }
 
     // SECURITY 
-    if (record.borrower.toString() !== req.userId) {
-      return res.status(403).json({ message: "Unauthorized" });
-    }
+   if (record.borrower.toString() !== req.userId.toString()) {
+  return res.status(403).json({
+    success: false,
+    message: "Not authorized to return this book",
+  });
+}
 
     record.status = "returned";
     record.returnedDate = new Date();
