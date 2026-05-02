@@ -50,7 +50,7 @@ image: {
 status: {
   type: String,
   enum: ["available", "borrowed"],
-  default: "Available"
+  default: "available"
 },
 borrowedBy: {
   type: mongoose.Schema.Types.ObjectId,

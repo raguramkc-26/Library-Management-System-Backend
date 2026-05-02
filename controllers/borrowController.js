@@ -17,16 +17,23 @@ const borrowBook = async (req, res) => {
 
     const book = await Book.findById(bookId).session(session);
 
-    if (!book) throw new Error("Book not found");
-    if (book.status !== "available") throw new Error("Not available");
+    if (!book) {
+      return res.status(404).json({ message: "Book not found" });
+    }
+
+    if (book.status !== "available") {
+      return res.status(400).json({ message: "Book not available" });
+    }
 
     const exists = await Borrow.findOne({
       borrower: userId,
       book: bookId,
       status: "borrowed",
-    });
+    }).session(session);
 
-    if (exists) throw new Error("Already borrowed");
+    if (exists) {
+      return res.status(400).json({ message: "Already borrowed" });
+    }
 
     const dueDate = new Date();
     dueDate.setDate(dueDate.getDate() + 7);
@@ -35,6 +42,7 @@ const borrowBook = async (req, res) => {
       borrower: userId,
       book: bookId,
       dueDate,
+      status: "borrowed", 
     }], { session });
 
     book.status = "borrowed";
@@ -93,13 +101,21 @@ const returnBook = async (req, res) => {
     const { borrowId } = req.params;
 
     const record = await Borrow.findById(borrowId).session(session);
-    if (!record) throw new Error("Record not found");
+
+    if (!record) {
+      return res.status(404).json({ message: "Record not found" });
+    }
+
+    // SECURITY 
+    if (record.borrower.toString() !== req.userId) {
+      return res.status(403).json({ message: "Unauthorized" });
+    }
 
     record.status = "returned";
     record.returnedDate = new Date();
 
-    // FINE CALCULATION
     let fine = 0;
+
     if (record.returnedDate > record.dueDate) {
       const days = Math.ceil(
         (record.returnedDate - record.dueDate) / (1000 * 60 * 60 * 24)
@@ -112,7 +128,7 @@ const returnBook = async (req, res) => {
 
     await record.save({ session });
 
-    // CREATE PAYMENT ENTRY
+    // PAYMENT RECORD
     if (fine > 0) {
       await Payment.create([{
         user: record.borrower,
@@ -123,37 +139,44 @@ const returnBook = async (req, res) => {
 
     const book = await Book.findById(record.book).session(session);
 
-    // FIFO queue
     const next = await Reservation.findOne({
       book: record.book,
       status: "waiting",
-    }).sort({ createdAt: 1 }).populate("user");
+    })
+      .sort({ createdAt: 1 })
+      .populate("user");
 
-    if (next) {
-      next.status = "notified";
-      await next.save({ session });
-
-      await sendEmail({
-        to: next.user.email,
-        subject: "Book Available",
-        html: `<p>${book.title} is available</p>`,
-      });
-
-    } else {
-      book.status = "available";
-      book.borrowedBy = null;
-      await book.save({ session });
-    }
+    // ALWAYS RESET BOOK
+    book.status = "available";
+    book.borrowedBy = null;
+    await book.save({ session });
 
     await session.commitTransaction();
+    session.endSession();
+
+    // EMAIL OUTSIDE TRANSACTION
+    if (next) {
+      try {
+        next.status = "notified";
+        await next.save();
+
+        await sendEmail({
+          to: next.user.email,
+          subject: "Book Available",
+          html: `<p>${book.title} is available</p>`,
+        });
+      } catch (err) {
+        console.error("Email failed:", err.message);
+      }
+    }
 
     res.json({ success: true, fine });
 
   } catch (err) {
     await session.abortTransaction();
-    res.status(500).json({ message: err.message });
-  } finally {
     session.endSession();
+
+    res.status(500).json({ message: err.message });
   }
 };
 
