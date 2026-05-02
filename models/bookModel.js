@@ -49,7 +49,7 @@ image: {
 },
 status: {
   type: String,
-  enum: ["Available", "Borrowed"],
+  enum: ["available", "borrowed"],
   default: "Available"
 },
 borrowedBy: {
