@@ -7,180 +7,138 @@ const sendEmail = require("../utils/email");
 
 // BORROW BOOK
 const borrowBook = async (req, res) => {
+  const session = await mongoose.startSession();
+  session.startTransaction();
+
   try {
     const userId = req.userId;
     const { bookId } = req.params;
 
-    if (req.role !== "user") {
-      return res.status(403).json({
-        success: false,
-        message: "Only users can borrow books",
-      });
+    const book = await Book.findById(bookId).session(session);
+    if (!book) throw new Error("Book not found");
+
+    if (book.status !== "available") {
+      throw new Error("Book not available");
     }
 
-    if (!mongoose.Types.ObjectId.isValid(bookId)) {
-      return res.status(400).json({
-        success: false,
-        message: "Invalid book ID",
-      });
-    }
-
-    const book = await Book.findById(bookId);
-
-    if (!book) {
-      return res.status(404).json({
-        success: false,
-        message: "Book not found",
-      });
-    }
-
-    if (book.status !== "Available") {
-      return res.status(400).json({
-        success: false,
-        message: "Book not available",
-      });
-    }
-       book.status = "borrowed";
-       await book.save();
-
-    // prevent duplicate borrow
-    const alreadyBorrowed = await Borrow.findOne({
+    // prevent duplicate
+    const already = await Borrow.findOne({
       borrower: userId,
       book: bookId,
       status: "borrowed",
-    });
+    }).session(session);
 
-    if (alreadyBorrowed) {
-      return res.status(400).json({
-        success: false,
-        message: "You already borrowed this book",
-      });
-    }
+    if (already) throw new Error("Already borrowed");
 
     const dueDate = new Date();
-    dueDate.setDate(dueDate.getDate() + 7);
+    dueDate.setDate(dueDate.getDate() + BORROW_DAYS);
 
-    const borrow = await Borrow.create({
+    const borrow = await Borrow.create([{
       borrower: userId,
       book: bookId,
       dueDate,
       status: "borrowed",
-    });
+    }], { session });
 
     book.status = "borrowed";
     book.borrowedBy = userId;
-    await book.save();
 
-    res.status(201).json({
-      success: true,
-      message: "Book borrowed successfully",
-      data: borrow,
-    });
+    await book.save({ session });
+
+    await session.commitTransaction();
+
+    res.json({ success: true, data: borrow[0] });
 
   } catch (err) {
-    console.error("Borrow Error:", err);
-
-    res.status(500).json({
-      success: false,
-      message: err.message,
-    });
+    await session.abortTransaction();
+    res.status(400).json({ success: false, message: err.message });
+  } finally {
+    session.endSession();
   }
 };
 
 
 // RETURN BOOK
 const returnBook = async (req, res) => {
+  const session = await mongoose.startSession();
+  session.startTransaction();
+
   try {
     const { borrowId } = req.params;
-    const userId = req.userId;
 
-    if (req.role !== "user") {
-      return res.status(403).json({
-        success: false,
-        message: "Only users can return books",
-      });
-    }
-
-    if (!mongoose.Types.ObjectId.isValid(borrowId)) {
-      return res.status(400).json({
-        success: false,
-        message: "Invalid borrow ID",
-      });
-    }
-
-    const record = await Borrow.findById(borrowId);
-
-    if (!record) {
-      return res.status(404).json({
-        success: false,
-        message: "Borrow record not found",
-      });
-    }
+    const record = await Borrow.findById(borrowId).session(session);
+    if (!record) throw new Error("Borrow record not found");
 
     if (record.borrower.toString() !== req.userId.toString()) {
-      return res.status(403).json({
-        success: false,
-        message: "Not authorized",
-      });
+      throw new Error("Not authorized");
     }
 
     if (record.status === "returned") {
-      return res.status(400).json({
-        success: false,
-        message: "Already returned",
-      });
+      throw new Error("Already returned");
+    }
+
+    const book = await Book.findById(record.book).session(session);
+
+    // FINE CALCULATION
+    const today = new Date();
+    let fine = 0;
+
+    if (today > record.dueDate) {
+      const lateDays = Math.ceil(
+        (today - record.dueDate) / (1000 * 60 * 60 * 24)
+      );
+      fine = lateDays * FINE_PER_DAY;
     }
 
     record.status = "returned";
-    record.returnedDate = new Date();
-    await record.save();
+    record.returnedDate = today;
+    record.fine = fine;
 
-    const book = await Book.findById(record.book);
+    await record.save({ session });
 
-    // reservation logic
+    // FIFO QUEUE
     const next = await Reservation.findOne({
-      book: record.book,
+      book: book._id,
       status: "waiting",
     })
       .sort({ createdAt: 1 })
-      .populate("user");
+      .populate("user")
+      .session(session);
 
     if (next) {
-      await sendEmail(
-        next.user.email,
-        "Book Available",
-        `Hi ${next.user.name}, "${book.title}" is now available.`
-      );
-
-      await Notification.create({
-        user: next.user._id,
-        message: `"${book.title}" is now available`,
-        type: "reservation",
+      await sendEmail({
+        to: next.user.email,
+        subject: "Book Available",
+        html: `<p>${book.title} is now available</p>`,
       });
 
       next.status = "notified";
-      await next.save();
+      await next.save({ session });
+
+      book.status = "reserved"; // important
+
+    } else {
+      book.status = "available";
     }
 
-    book.status = "available";
     book.borrowedBy = null;
-    await book.save();
+    await book.save({ session });
+
+    await session.commitTransaction();
 
     res.json({
       success: true,
-      message: "Book returned successfully",
+      message: "Returned successfully",
+      fine,
     });
 
   } catch (err) {
-    console.error("Return Error:", err);
-
-    res.status(500).json({
-      success: false,
-      message: err.message,
-    });
+    await session.abortTransaction();
+    res.status(400).json({ success: false, message: err.message });
+  } finally {
+    session.endSession();
   }
 };
-
 
 // GET MY BORROWINGS
 const getMyBorrowings = async (req, res) => {
@@ -205,8 +163,45 @@ const getMyBorrowings = async (req, res) => {
   }
 };
 
+//reserve book
+const reserveBook = async (req, res) => {
+  try {
+    const { bookId } = req.params;
+
+    const exists = await Reservation.findOne({
+      user: req.userId,
+      book: bookId,
+      status: "waiting",
+    });
+
+    if (exists) {
+      return res.status(400).json({
+        success: false,
+        message: "Already in queue",
+      });
+    }
+
+    await Reservation.create({
+      user: req.userId,
+      book: bookId,
+      status: "waiting",
+    });
+
+    res.json({
+      success: true,
+      message: "Added to reservation queue",
+    });
+
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: err.message,
+    });
+  }
+};
 module.exports = {
   borrowBook,
   returnBook,
   getMyBorrowings,
+  reserveBook,
 };
