@@ -36,7 +36,7 @@ const createReservation = async (req, res) => {
     }
 
     // FIXED: correct logic
-    if (book.status === "Available") {
+    if (book.status === "available") {
       return res.status(400).json({
         success: false,
         message: "Book is available. Borrow instead."
