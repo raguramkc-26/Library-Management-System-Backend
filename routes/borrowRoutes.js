@@ -22,7 +22,7 @@ borrowRouter.get("/me", getMyBorrowings);
 borrowRouter.post("/:bookId", borrowBook);
 
 // reserve book
-borrowRouter.post("/bookId/reserve", reserveBook);
+borrowRouter.post("/:bookId/reserve", reserveBook);
 
 // return book
 borrowRouter.put("/:borrowId/return", returnBook);
