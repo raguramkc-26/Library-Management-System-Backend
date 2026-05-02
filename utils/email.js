@@ -6,15 +6,14 @@ const transporter = nodemailer.createTransport({
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
   },
+  connectionTimeout: 5000,
+  greetingTimeout: 5000,
+  socketTimeout: 5000,
 });
 
-transporter.verify((error, success) => {
-  if (error) {
-    console.error("Email server error:", error.message);
-  } else {
-    console.log("Email server is ready");
-  }
-});
+transporter.verify()
+.then(() => console.log("Email ready"))
+.catch(err => console.error("Email config error:", err));
 
 // SEND EMAIL FUNCTION
 const sendEmail = async ({ to, subject, text, html }) => {

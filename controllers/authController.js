@@ -214,7 +214,7 @@ const authController = {
     await user.save();
 
     const resetURL = `${CLIENT_URL}/reset-password/${resetToken}`;
-
+    console.log("Sending email to:",uer.email);
     await sendEmail({
     to: user.email,
     subject: "Password Reset",
@@ -224,7 +224,7 @@ const authController = {
     <a href="${resetURL}" target="_blank">${resetURL}</a>
    `,
   });
-
+   console.log("Email sent successfully");
     res.json({
       success: true,
       message: "Reset link sent (check email)",
