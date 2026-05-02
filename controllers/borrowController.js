@@ -3,9 +3,10 @@ const Borrow = require("../models/borrowModel");
 const Book = require("../models/bookModel");
 const Reservation = require("../models/reservationModel");
 const Notification = require("../models/notificationModel");
+const Payment = require("../models/paymentModel");
 const sendEmail = require("../utils/email");
 
-// ================= BORROW BOOK =================
+// ================= BORROW =================
 const borrowBook = async (req, res) => {
   const session = await mongoose.startSession();
   session.startTransaction();
@@ -17,65 +18,42 @@ const borrowBook = async (req, res) => {
     const book = await Book.findById(bookId).session(session);
 
     if (!book) throw new Error("Book not found");
+    if (book.status !== "available") throw new Error("Not available");
 
-    if (book.status !== "Available") {
-      return res.status(400).json({
-        success: false,
-        message: "Book not available",
-      });
-    }
-
-    const alreadyBorrowed = await Borrow.findOne({
+    const exists = await Borrow.findOne({
       borrower: userId,
       book: bookId,
       status: "borrowed",
     });
 
-    if (alreadyBorrowed) {
-      return res.status(400).json({
-        success: false,
-        message: "Already borrowed",
-      });
-    }
+    if (exists) throw new Error("Already borrowed");
 
     const dueDate = new Date();
     dueDate.setDate(dueDate.getDate() + 7);
 
-    const borrow = await Borrow.create(
-      [{
-        borrower: userId,
-        book: bookId,
-        dueDate,
-        status: "borrowed",
-      }],
-      { session }
-    );
+    const borrow = await Borrow.create([{
+      borrower: userId,
+      book: bookId,
+      dueDate,
+    }], { session });
 
     book.status = "borrowed";
     book.borrowedBy = userId;
     await book.save({ session });
 
     await session.commitTransaction();
-    session.endSession();
 
-    res.json({
-      success: true,
-      message: "Book borrowed",
-      data: borrow[0],
-    });
+    res.json({ success: true, data: borrow[0] });
 
   } catch (err) {
     await session.abortTransaction();
+    res.status(500).json({ message: err.message });
+  } finally {
     session.endSession();
-
-    res.status(500).json({
-      success: false,
-      message: err.message,
-    });
   }
 };
 
-// ================= RESERVE BOOK =================
+// ================= RESERVE =================
 const reserveBook = async (req, res) => {
   try {
     const { bookId } = req.params;
@@ -86,14 +64,9 @@ const reserveBook = async (req, res) => {
       status: "waiting",
     });
 
-    if (exists) {
-      return res.status(400).json({
-        success: false,
-        message: "Already in queue",
-      });
-    }
+    if (exists) throw new Error("Already in queue");
 
-    const queuePosition = await Reservation.countDocuments({
+    const count = await Reservation.countDocuments({
       book: bookId,
       status: "waiting",
     });
@@ -101,24 +74,17 @@ const reserveBook = async (req, res) => {
     await Reservation.create({
       user: req.userId,
       book: bookId,
-      status: "waiting",
-      position: queuePosition + 1,
+      position: count + 1,
     });
 
-    res.json({
-      success: true,
-      message: `Added to queue (Position ${queuePosition + 1})`,
-    });
+    res.json({ success: true, message: `Queue position ${count + 1}` });
 
   } catch (err) {
-    res.status(500).json({
-      success: false,
-      message: err.message,
-    });
+    res.status(500).json({ message: err.message });
   }
 };
 
-// ================= RETURN BOOK =================
+// ================= RETURN =================
 const returnBook = async (req, res) => {
   const session = await mongoose.startSession();
   session.startTransaction();
@@ -127,33 +93,41 @@ const returnBook = async (req, res) => {
     const { borrowId } = req.params;
 
     const record = await Borrow.findById(borrowId).session(session);
-
     if (!record) throw new Error("Record not found");
 
     record.status = "returned";
     record.returnedDate = new Date();
 
-    // OVERDUE FINE LOGIC
+    // FINE CALCULATION
     let fine = 0;
     if (record.returnedDate > record.dueDate) {
-      const daysLate = Math.ceil(
+      const days = Math.ceil(
         (record.returnedDate - record.dueDate) / (1000 * 60 * 60 * 24)
       );
-      fine = daysLate * 10; // ₹10 per day
-      record.fine = fine;
+      fine = days * 10;
     }
+
+    record.fineAmount = fine;
+    record.finePaid = false;
 
     await record.save({ session });
 
+    // CREATE PAYMENT ENTRY
+    if (fine > 0) {
+      await Payment.create([{
+        user: record.borrower,
+        borrow: record._id,
+        amount: fine,
+      }], { session });
+    }
+
     const book = await Book.findById(record.book).session(session);
 
-    // FIFO RESERVATION SYSTEM
+    // FIFO queue
     const next = await Reservation.findOne({
       book: record.book,
       status: "waiting",
-    })
-      .sort({ createdAt: 1 })
-      .populate("user");
+    }).sort({ createdAt: 1 }).populate("user");
 
     if (next) {
       next.status = "notified";
@@ -162,13 +136,8 @@ const returnBook = async (req, res) => {
       await sendEmail({
         to: next.user.email,
         subject: "Book Available",
-        html: `<p>${book.title} is now available</p>`,
+        html: `<p>${book.title} is available</p>`,
       });
-
-      await Notification.create([{
-        user: next.user._id,
-        message: `${book.title} is available`,
-      }], { session });
 
     } else {
       book.status = "available";
@@ -177,43 +146,24 @@ const returnBook = async (req, res) => {
     }
 
     await session.commitTransaction();
-    session.endSession();
 
-    res.json({
-      success: true,
-      message: "Returned successfully",
-      fine,
-    });
+    res.json({ success: true, fine });
 
   } catch (err) {
     await session.abortTransaction();
+    res.status(500).json({ message: err.message });
+  } finally {
     session.endSession();
-
-    res.status(500).json({
-      success: false,
-      message: err.message,
-    });
   }
 };
 
-// ================= GET MY BORROW =================
+// ================= GET =================
 const getMyBorrowings = async (req, res) => {
-  try {
-    const data = await Borrow.find({ borrower: req.userId })
-      .populate("book")
-      .sort({ createdAt: -1 });
+  const data = await Borrow.find({ borrower: req.userId })
+    .populate("book")
+    .sort({ createdAt: -1 });
 
-    res.json({
-      success: true,
-      data,
-    });
-
-  } catch (err) {
-    res.status(500).json({
-      success: false,
-      message: err.message,
-    });
-  }
+  res.json({ success: true, data });
 };
 
 module.exports = {
