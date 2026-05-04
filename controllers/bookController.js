@@ -99,20 +99,20 @@ const getBooks = async (req, res) => {
 
     if (genre) query.genre = genre;
 
-    if (available === "true") query.status = "Available";
-    if (available === "false") query.status = "Borrowed";
+    if (available === "true") query.status = "available";
+    if (available === "false") query.status = "borrowed";
 
     const books = await Book.find(query).skip(skip).limit(limit);
     const total = await Book.countDocuments(query);
 
     return res.json({
       success: true,
-      data: books, // ✅ FIXED
+      data: books, 
       totalPages: Math.ceil(total / limit),
     });
 
   } catch (err) {
-    console.error("GET BOOKS ERROR:", err); // ✅ FIXED
+    console.error("GET BOOKS ERROR:", err); 
 
     return res.status(500).json({
       success: false,
