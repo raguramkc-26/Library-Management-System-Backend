@@ -10,58 +10,60 @@ const authController = {
 
   // ================= REGISTER =================
   register: async (req, res) => {
-    try {
-      const { name, email, password } = req.body;
+  try {
+    const { name, email, password } = req.body;
 
-      if (!name || !email || !password) {
-        return res.status(400).json({
-          success: false,
-          message: "All fields are required",
-        });
-      }
-      const normalizedEmail = email.trim().toLowerCase();
-      const normalizedName = name.trim();
-      const existingUser = await User.findOne({ email: normalizedEmail });
-      await User.create({
-        name: normalizedName,
-        email: normalizedEmail,
-        password: hashedPassword,
-      })
-      if (existingUser) {
-        return res.status(400).json({
-          success: false,
-          message: "User already exists",
-        });
-      }
-
-      const hashedPassword = await bcrypt.hash(password, 10);
-
-      const user = await User.create({
-        name: normalizedName,
-        email: normalizedEmail,
-        password: hashedPassword,
-      });
-
-      res.status(201).json({
-        success: true,
-        message: "User registered successfully",
-      });
-
-    } catch (error) {
-      console.error("Register Error:", error);
-      if (error.code === 11000) {
-        return res.status(400).json({
-          success: false,
-          message: "Email already exists" ,
-        });
-      }
-      res.status(500).json({
+    if (!name || !email || !password) {
+      return res.status(400).json({
         success: false,
-        message: "Server error during registration",
+        message: "All fields are required",
       });
     }
-  },
 
+    const normalizedEmail = email.trim().toLowerCase();
+    const normalizedName = name.trim();
+
+    // Check existing user FIRST
+    const existingUser = await User.findOne({ email: normalizedEmail });
+    if (existingUser) {
+      return res.status(400).json({
+        success: false,
+        message: "User already exists",
+      });
+    }
+
+    // Hash AFTER check
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Create ONLY ONCE
+    await User.create({
+      name: normalizedName,
+      email: normalizedEmail,
+      password: hashedPassword,
+    });
+
+    res.status(201).json({
+      success: true,
+      message: "User registered successfully",
+    });
+
+  } catch (error) {
+    console.error("Register Error:", error);
+
+    // Handle duplicate error
+    if (error.code === 11000) {
+      return res.status(400).json({
+        success: false,
+        message: "Email already exists",
+      });
+    }
+
+    res.status(500).json({
+      success: false,
+      message: "Server error during registration",
+    });
+  }
+},
   // ================= LOGIN =================
   login: async (req, res) => {
     try {
