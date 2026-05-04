@@ -49,6 +49,12 @@ const authController = {
 
     } catch (error) {
       console.error("Register Error:", error);
+      if (error.code === 11000) {
+        return res.status(400).json({
+          success: false,
+          message: "Email already exists" ,
+        });
+      }
       res.status(500).json({
         success: false,
         message: "Server error during registration",
