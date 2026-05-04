@@ -45,13 +45,13 @@ const createBook = async (req, res) => {
       year: parsedYear,
       isbn,
       image,
-      status: "Available",
+      status: "available",
     });
 
     return res.status(201).json({
       success: true,
       message: "Book created successfully",
-      data: book, // ✅ FIXED
+      data: book, 
     });
 
   } catch (err) {
