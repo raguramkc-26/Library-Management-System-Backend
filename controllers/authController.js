@@ -19,7 +19,8 @@ const authController = {
           message: "All fields are required",
         });
       }
-
+      email = email.trim().toLowerCase();
+      name = name.trim();
       const existingUser = await User.findOne({ email });
       if (existingUser) {
         return res.status(400).json({
@@ -61,7 +62,7 @@ const authController = {
           message: "Email and password required",
         });
       }
-
+      email = email.trim().toLowerCase();
       const user = await User.findOne({ email }).select("+password");
 
       if (!user) {
