@@ -163,7 +163,7 @@ const deleteUser = async (req, res) => {
       });
     }
 
-    if (req.userId.toString() === userId) {
+    if (String(req.userId) === String(userId)) {
       return res.status(400).json({
         success: false,
         message: "You cannot delete your own account",
