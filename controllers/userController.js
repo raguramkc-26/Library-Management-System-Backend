@@ -120,6 +120,17 @@ const updateRole = async (req, res) => {
       });
     }
 
+    if (role === "admin") {
+      const adminCount = await
+      User.countDocuments({ role: "admin" });
+      if (adminCount >= 1 ) {
+        return res.status(400).json({
+          success: false,
+          message: "only one admin allowed",
+        });
+      }
+    }
+
     const user = await User.findByIdAndUpdate(
       userId,
       { role },
