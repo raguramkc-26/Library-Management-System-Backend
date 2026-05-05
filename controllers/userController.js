@@ -1,11 +1,10 @@
 const User = require("../models/userModel");
 const mongoose = require("mongoose");
 
-
 // ================= GET ALL USERS (ADMIN) =================
 const getAllUsers = async (req, res) => {
   try {
-    if (req.role !== "admin") {
+    if (!req.userId || req.role !== "admin") {
       return res.status(403).json({
         success: false,
         message: "Admin access only",
@@ -28,11 +27,17 @@ const getAllUsers = async (req, res) => {
   }
 };
 
-
 // ================= GET USER DETAILS =================
 const getUserDetails = async (req, res) => {
   try {
     const userId = req.params.id;
+
+    if (!req.userId) {
+      return res.status(401).json({
+        success: false,
+        message: "Unauthorized",
+      });
+    }
 
     if (!mongoose.Types.ObjectId.isValid(userId)) {
       return res.status(400).json({
@@ -42,7 +47,7 @@ const getUserDetails = async (req, res) => {
     }
 
     // allow self OR admin
-    if (req.userId.toString() !== userId && req.role !== "admin") {
+    if (String(req.userId) !== String(userId) && req.role !== "admin") {
       return res.status(403).json({
         success: false,
         message: "Forbidden",
@@ -71,12 +76,18 @@ const getUserDetails = async (req, res) => {
   }
 };
 
-
 // ================= UPDATE ROLE =================
 const updateRole = async (req, res) => {
   try {
     const { role } = req.body;
     const userId = req.params.id;
+
+    if (!req.userId || req.role !== "admin") {
+      return res.status(403).json({
+        success: false,
+        message: "Only admin can update roles",
+      });
+    }
 
     if (!mongoose.Types.ObjectId.isValid(userId)) {
       return res.status(400).json({
@@ -92,15 +103,8 @@ const updateRole = async (req, res) => {
       });
     }
 
-    if (req.role !== "admin") {
-      return res.status(403).json({
-        success: false,
-        message: "Only admin can update roles",
-      });
-    }
-
     // prevent admin modifying own role
-    if (req.userId.toString() === userId) {
+    if (String(req.userId) === String(userId)) {
       return res.status(400).json({
         success: false,
         message: "Admin cannot change their own role",
@@ -143,11 +147,17 @@ const updateRole = async (req, res) => {
   }
 };
 
-
 // ================= DELETE USER =================
 const deleteUser = async (req, res) => {
   try {
     const userId = req.params.id;
+
+    if (!req.userId || req.role !== "admin") {
+      return res.status(403).json({
+        success: false,
+        message: "Admin only",
+      });
+    }
 
     if (!mongoose.Types.ObjectId.isValid(userId)) {
       return res.status(400).json({
@@ -156,13 +166,7 @@ const deleteUser = async (req, res) => {
       });
     }
 
-    if (req.role !== "admin") {
-      return res.status(403).json({
-        success: false,
-        message: "Admin only",
-      });
-    }
-
+    // prevent self delete
     if (String(req.userId) === String(userId)) {
       return res.status(400).json({
         success: false,
@@ -170,20 +174,7 @@ const deleteUser = async (req, res) => {
       });
     }
 
-    const Borrow = require("../models/borrowModel");
-
-    const activeBorrow = await Borrow.findOne({
-    borrower: userId,
-    status: "borrowed"
-    });
-
-if (activeBorrow) {
-  return res.status(400).json({
-    message: "User has active borrowed books"
-  });
-}
-
-    const user = await User.findByIdAndDelete(userId);
+    const user = await User.findById(userId);
 
     if (!user) {
       return res.status(404).json({
@@ -191,6 +182,29 @@ if (activeBorrow) {
         message: "User not found",
       });
     }
+
+    if (user.role === "admin") {
+      return res.status(400).json({
+        success: false,
+        message: "Cannot delete another admin",
+      });
+    }
+
+    const Borrow = require("../models/borrowModel");
+
+    const activeBorrow = await Borrow.findOne({
+      borrower: userId,
+      status: "borrowed",
+    });
+
+    if (activeBorrow) {
+      return res.status(400).json({
+        success: false,
+        message: "User has active borrowed books",
+      });
+    }
+
+    await User.findByIdAndDelete(userId);
 
     res.status(200).json({
       success: true,
@@ -204,7 +218,6 @@ if (activeBorrow) {
     });
   }
 };
-
 
 module.exports = {
   getAllUsers,
